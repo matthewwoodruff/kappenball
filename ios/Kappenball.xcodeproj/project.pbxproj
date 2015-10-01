@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9135C181719DA12005A928C /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C9135C171719DA12005A928C /* ball.png */; };
+		C9135C1A1719E19B005A928C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9135C191719E19B005A928C /* Default.png */; };
+		C9135C1C1719E26B005A928C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9135C1B1719E26B005A928C /* Default@2x.png */; };
+		C9135C1E1719E29D005A928C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9135C1D1719E29D005A928C /* Default-568h@2x.png */; };
+		C91F03B71645689B00B78DD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91F03B61645689B00B78DD7 /* UIKit.framework */; };
+		C91F03B91645689B00B78DD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91F03B81645689B00B78DD7 /* Foundation.framework */; };
+		C91F03BB1645689B00B78DD7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91F03BA1645689B00B78DD7 /* CoreGraphics.framework */; };
+		C91F03C11645689B00B78DD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C91F03BF1645689B00B78DD7 /* InfoPlist.strings */; };
+		C91F03C31645689B00B78DD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C91F03C21645689B00B78DD7 /* main.m */; };
+		C91F03C71645689B00B78DD7 /* KappenballAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C91F03C61645689B00B78DD7 /* KappenballAppDelegate.m */; };
+		C91F03D01645689B00B78DD7 /* KappenballViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91F03CF1645689B00B78DD7 /* KappenballViewController.m */; };
+		C91F03DC16456C8900B78DD7 /* slider1.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F03DB16456C8900B78DD7 /* slider1.png */; };
+		C91F03DE16456C8E00B78DD7 /* slider2.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F03DD16456C8E00B78DD7 /* slider2.png */; };
+		C91F03E016456C9300B78DD7 /* thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F03DF16456C9300B78DD7 /* thumb.png */; };
+		C91F03EA1645E3B000B78DD7 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = C91F03E91645E3B000B78DD7 /* Ball.m */; };
+		C92520FC1777426E008AB8B4 /* App-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C92520FB1777426E008AB8B4 /* App-Icon.png */; };
+		C92520FE17774271008AB8B4 /* App-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92520FD17774271008AB8B4 /* App-Icon@2x.png */; };
+		C932E7531778A4F40085C115 /* KappenballAttempt.m in Sources */ = {isa = PBXBuildFile; fileRef = C932E7521778A4F40085C115 /* KappenballAttempt.m */; };
+		C95624CD165109C000DB616F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95624CC165109C000DB616F /* AudioToolbox.framework */; };
+		C95624D51651110700DB616F /* SuccessBallSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = C95624D41651110700DB616F /* SuccessBallSound.caf */; };
+		C95624D91651141500DB616F /* DeadBallSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = C95624D81651141500DB616F /* DeadBallSound.caf */; };
+		C95624DD16512EB400DB616F /* kappenballGames.sql in Resources */ = {isa = PBXBuildFile; fileRef = C95624DC16512EB400DB616F /* kappenballGames.sql */; };
+		C959CF11164DA246000F68B4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C959CF10164DA246000F68B4 /* libsqlite3.dylib */; };
+		C967BE7916579FD300538864 /* FingerGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = C967BE7816579FD300538864 /* FingerGlow.png */; };
+		C96B25B01656D8EB0076598F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96B25AF1656D8EB0076598F /* AVFoundation.framework */; };
+		C96F0E08164FB9D30090B471 /* PlayerNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96F0E07164FB9D30090B471 /* PlayerNameViewController.m */; };
+		C97E489417784F0C0003F970 /* field@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97E489317784F0C0003F970 /* field@1x.png */; };
+		C97E489617784F1C0003F970 /* field@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97E489517784F1C0003F970 /* field@2x.png */; };
+		C98C14F1164E827800B5C8EF /* KappenballGamesHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C14F0164E827800B5C8EF /* KappenballGamesHistory.m */; };
+		C98C150C164F229500B5C8EF /* EnergyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C150B164F229500B5C8EF /* EnergyTableViewController.m */; };
+		C98C150F164F26B000B5C8EF /* AverageEnergyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C150E164F26B000B5C8EF /* AverageEnergyTableViewController.m */; };
+		C9A39B55171728FE006B7A7E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A39B54171728FE006B7A7E /* AboutViewController.m */; };
+		C9A39B5717172E44006B7A7E /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = C9A39B5617172E44006B7A7E /* about.html */; };
+		C9CAA68E164C051100B07497 /* KappenballGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CAA68D164C051000B07497 /* KappenballGame.m */; };
+		C9CAA69A164C178100B07497 /* BallStates.c in Sources */ = {isa = PBXBuildFile; fileRef = C9CAA699164C178100B07497 /* BallStates.c */; };
+		C9D7448616499909000773D4 /* Directions.c in Sources */ = {isa = PBXBuildFile; fileRef = C9D7448516499909000773D4 /* Directions.c */; };
+		C9DDF3C3171762FF00AEEDE7 /* WallHitSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = C9DDF3C2171762FF00AEEDE7 /* WallHitSound.caf */; };
+		C9E2B88E164829980065FCF5 /* KappenballStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E2B88D164829980065FCF5 /* KappenballStoryboard.storyboard */; };
+		C9E2B89116482ABC0065FCF5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2B89016482ABB0065FCF5 /* HomeViewController.m */; };
+		C9E2B8941648301F0065FCF5 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2B8931648301F0065FCF5 /* LeaderboardViewController.m */; };
+		C9E2B8971648309A0065FCF5 /* PauseGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2B8961648309A0065FCF5 /* PauseGameViewController.m */; };
+		C9E61F911646FE9500804578 /* KappenballObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E61F901646FE9500804578 /* KappenballObstacles.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C9135C171719DA12005A928C /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		C9135C191719E19B005A928C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		C9135C1B1719E26B005A928C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		C9135C1D1719E29D005A928C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		C91F03B21645689B00B78DD7 /* Kappenball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kappenball.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C91F03B61645689B00B78DD7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C91F03B81645689B00B78DD7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C91F03BA1645689B00B78DD7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C91F03BE1645689B00B78DD7 /* Kappenball-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kappenball-Info.plist"; sourceTree = "<group>"; };
+		C91F03C01645689B00B78DD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C91F03C21645689B00B78DD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C91F03C41645689B00B78DD7 /* Kappenball-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kappenball-Prefix.pch"; sourceTree = "<group>"; };
+		C91F03C51645689B00B78DD7 /* KappenballAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KappenballAppDelegate.h; sourceTree = "<group>"; };
+		C91F03C61645689B00B78DD7 /* KappenballAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KappenballAppDelegate.m; sourceTree = "<group>"; };
+		C91F03CE1645689B00B78DD7 /* KappenballViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KappenballViewController.h; sourceTree = "<group>"; };
+		C91F03CF1645689B00B78DD7 /* KappenballViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KappenballViewController.m; sourceTree = "<group>"; };
+		C91F03DB16456C8900B78DD7 /* slider1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider1.png; sourceTree = "<group>"; };
+		C91F03DD16456C8E00B78DD7 /* slider2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider2.png; sourceTree = "<group>"; };
+		C91F03DF16456C9300B78DD7 /* thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb.png; sourceTree = "<group>"; };
+		C91F03E81645E3B000B78DD7 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		C91F03E91645E3B000B78DD7 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
+		C92520FB1777426E008AB8B4 /* App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "App-Icon.png"; path = "../App-Icon.png"; sourceTree = "<group>"; };
+		C92520FD17774271008AB8B4 /* App-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "App-Icon@2x.png"; path = "../App-Icon@2x.png"; sourceTree = "<group>"; };
+		C932E7511778A4F40085C115 /* KappenballAttempt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KappenballAttempt.h; sourceTree = "<group>"; };
+		C932E7521778A4F40085C115 /* KappenballAttempt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KappenballAttempt.m; sourceTree = "<group>"; };
+		C95624CC165109C000DB616F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C95624D41651110700DB616F /* SuccessBallSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SuccessBallSound.caf; sourceTree = "<group>"; };
+		C95624D81651141500DB616F /* DeadBallSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DeadBallSound.caf; sourceTree = "<group>"; };
+		C95624DC16512EB400DB616F /* kappenballGames.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = kappenballGames.sql; sourceTree = "<group>"; };
+		C959CF10164DA246000F68B4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C967BE7816579FD300538864 /* FingerGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FingerGlow.png; sourceTree = "<group>"; };
+		C96B25AF1656D8EB0076598F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C96F0E06164FB9D30090B471 /* PlayerNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerNameViewController.h; sourceTree = "<group>"; };
+		C96F0E07164FB9D30090B471 /* PlayerNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerNameViewController.m; sourceTree = "<group>"; };
+		C97E489317784F0C0003F970 /* field@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field@1x.png"; sourceTree = "<group>"; };
+		C97E489517784F1C0003F970 /* field@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field@2x.png"; sourceTree = "<group>"; };
+		C98C14EF164E827800B5C8EF /* KappenballGamesHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KappenballGamesHistory.h; sourceTree = "<group>"; };
+		C98C14F0164E827800B5C8EF /* KappenballGamesHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KappenballGamesHistory.m; sourceTree = "<group>"; };
+		C98C150A164F229500B5C8EF /* EnergyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnergyTableViewController.h; sourceTree = "<group>"; };
+		C98C150B164F229500B5C8EF /* EnergyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnergyTableViewController.m; sourceTree = "<group>"; };
+		C98C150D164F26B000B5C8EF /* AverageEnergyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AverageEnergyTableViewController.h; sourceTree = "<group>"; };
+		C98C150E164F26B000B5C8EF /* AverageEnergyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AverageEnergyTableViewController.m; sourceTree = "<group>"; };
+		C9A39B53171728FE006B7A7E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		C9A39B54171728FE006B7A7E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		C9A39B5617172E44006B7A7E /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		C9CAA68C164C051000B07497 /* KappenballGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KappenballGame.h; sourceTree = "<group>"; };
+		C9CAA68D164C051000B07497 /* KappenballGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KappenballGame.m; sourceTree = "<group>"; };
+		C9CAA699164C178100B07497 /* BallStates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BallStates.c; sourceTree = "<group>"; };
+		C9D7448516499909000773D4 /* Directions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Directions.c; sourceTree = "<group>"; };
+		C9DDF3C2171762FF00AEEDE7 /* WallHitSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WallHitSound.caf; sourceTree = "<group>"; };
+		C9E2B88D164829980065FCF5 /* KappenballStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KappenballStoryboard.storyboard; sourceTree = "<group>"; };
+		C9E2B88F16482ABB0065FCF5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		C9E2B89016482ABB0065FCF5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C9E2B8921648301F0065FCF5 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
+		C9E2B8931648301F0065FCF5 /* LeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardViewController.m; sourceTree = "<group>"; };
+		C9E2B8951648309A0065FCF5 /* PauseGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseGameViewController.h; sourceTree = "<group>"; };
+		C9E2B8961648309A0065FCF5 /* PauseGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseGameViewController.m; sourceTree = "<group>"; };
+		C9E2B8981648385D0065FCF5 /* KappenballViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KappenballViewDelegate.h; sourceTree = "<group>"; };
+		C9E2B89916483EE20065FCF5 /* KappenballPauseGameDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KappenballPauseGameDelegate.h; sourceTree = "<group>"; };
+		C9E61F8F1646FE9500804578 /* KappenballObstacles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KappenballObstacles.h; sourceTree = "<group>"; };
+		C9E61F901646FE9500804578 /* KappenballObstacles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KappenballObstacles.m; sourceTree = "<group>"; };
+		CEE1E5B71B975ECC007F32D4 /* Kappenball-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kappenball-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C91F03AF1645689B00B78DD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C96B25B01656D8EB0076598F /* AVFoundation.framework in Frameworks */,
+				C95624CD165109C000DB616F /* AudioToolbox.framework in Frameworks */,
+				C959CF11164DA246000F68B4 /* libsqlite3.dylib in Frameworks */,
+				C91F03B71645689B00B78DD7 /* UIKit.framework in Frameworks */,
+				C91F03B91645689B00B78DD7 /* Foundation.framework in Frameworks */,
+				C91F03BB1645689B00B78DD7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C91F03A71645689B00B78DD7 = {
+			isa = PBXGroup;
+			children = (
+				C91F03B51645689B00B78DD7 /* Frameworks */,
+				C91F03BC1645689B00B78DD7 /* Kappenball */,
+				C92520FF177747AE008AB8B4 /* Libraries */,
+				C91F03B31645689B00B78DD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C91F03B31645689B00B78DD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C91F03B21645689B00B78DD7 /* Kappenball.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C91F03B51645689B00B78DD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C96B25AF1656D8EB0076598F /* AVFoundation.framework */,
+				C95624CC165109C000DB616F /* AudioToolbox.framework */,
+				C91F03B61645689B00B78DD7 /* UIKit.framework */,
+				C91F03B81645689B00B78DD7 /* Foundation.framework */,
+				C91F03BA1645689B00B78DD7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C91F03BC1645689B00B78DD7 /* Kappenball */ = {
+			isa = PBXGroup;
+			children = (
+				CEE1E5B71B975ECC007F32D4 /* Kappenball-Bridging-Header.h */,
+				C9CAA693164C05BA00B07497 /* Controller */,
+				C91F03C41645689B00B78DD7 /* Kappenball-Prefix.pch */,
+				C91F03C51645689B00B78DD7 /* KappenballAppDelegate.h */,
+				C91F03C61645689B00B78DD7 /* KappenballAppDelegate.m */,
+				C91F03C21645689B00B78DD7 /* main.m */,
+				C9CAA692164C056C00B07497 /* Model */,
+				C91F03BD1645689B00B78DD7 /* Supporting Files */,
+				C9CAA694164C05DE00B07497 /* View */,
+			);
+			path = Kappenball;
+			sourceTree = "<group>";
+		};
+		C91F03BD1645689B00B78DD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C95624E216512FBF00DB616F /* Protocols */,
+				C95624E116512FA700DB616F /* Enums */,
+				C95624E016512F8900DB616F /* Data */,
+				C95624DF16512F2500DB616F /* Sounds */,
+				C95624DE16512F1B00DB616F /* Images */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C92520FF177747AE008AB8B4 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				C959CF10164DA246000F68B4 /* libsqlite3.dylib */,
+			);
+			name = Libraries;
+			path = Kappenball;
+			sourceTree = "<group>";
+		};
+		C95624DE16512F1B00DB616F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C97E489517784F1C0003F970 /* field@2x.png */,
+				C97E489317784F0C0003F970 /* field@1x.png */,
+				C92520FD17774271008AB8B4 /* App-Icon@2x.png */,
+				C92520FB1777426E008AB8B4 /* App-Icon.png */,
+				C9135C1D1719E29D005A928C /* Default-568h@2x.png */,
+				C9135C1B1719E26B005A928C /* Default@2x.png */,
+				C9135C191719E19B005A928C /* Default.png */,
+				C967BE7816579FD300538864 /* FingerGlow.png */,
+				C91F03DB16456C8900B78DD7 /* slider1.png */,
+				C91F03DD16456C8E00B78DD7 /* slider2.png */,
+				C9135C171719DA12005A928C /* ball.png */,
+				C91F03DF16456C9300B78DD7 /* thumb.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		C95624DF16512F2500DB616F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C95624D81651141500DB616F /* DeadBallSound.caf */,
+				C95624D41651110700DB616F /* SuccessBallSound.caf */,
+				C9DDF3C2171762FF00AEEDE7 /* WallHitSound.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		C95624E016512F8900DB616F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C95624DC16512EB400DB616F /* kappenballGames.sql */,
+				C91F03BF1645689B00B78DD7 /* InfoPlist.strings */,
+				C91F03BE1645689B00B78DD7 /* Kappenball-Info.plist */,
+				C9A39B5617172E44006B7A7E /* about.html */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		C95624E116512FA700DB616F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				C9CAA699164C178100B07497 /* BallStates.c */,
+				C9D7448516499909000773D4 /* Directions.c */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		C95624E216512FBF00DB616F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C9E2B89916483EE20065FCF5 /* KappenballPauseGameDelegate.h */,
+				C9E2B8981648385D0065FCF5 /* KappenballViewDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		C9CAA692164C056C00B07497 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C98C14EF164E827800B5C8EF /* KappenballGamesHistory.h */,
+				C98C14F0164E827800B5C8EF /* KappenballGamesHistory.m */,
+				C932E7511778A4F40085C115 /* KappenballAttempt.h */,
+				C932E7521778A4F40085C115 /* KappenballAttempt.m */,
+				C9CAA68C164C051000B07497 /* KappenballGame.h */,
+				C9CAA68D164C051000B07497 /* KappenballGame.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C9CAA693164C05BA00B07497 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C9E2B88F16482ABB0065FCF5 /* HomeViewController.h */,
+				C9E2B89016482ABB0065FCF5 /* HomeViewController.m */,
+				C91F03CE1645689B00B78DD7 /* KappenballViewController.h */,
+				C91F03CF1645689B00B78DD7 /* KappenballViewController.m */,
+				C9E2B8921648301F0065FCF5 /* LeaderboardViewController.h */,
+				C9E2B8931648301F0065FCF5 /* LeaderboardViewController.m */,
+				C9E2B8951648309A0065FCF5 /* PauseGameViewController.h */,
+				C9E2B8961648309A0065FCF5 /* PauseGameViewController.m */,
+				C98C150A164F229500B5C8EF /* EnergyTableViewController.h */,
+				C98C150B164F229500B5C8EF /* EnergyTableViewController.m */,
+				C98C150D164F26B000B5C8EF /* AverageEnergyTableViewController.h */,
+				C98C150E164F26B000B5C8EF /* AverageEnergyTableViewController.m */,
+				C96F0E06164FB9D30090B471 /* PlayerNameViewController.h */,
+				C96F0E07164FB9D30090B471 /* PlayerNameViewController.m */,
+				C9A39B53171728FE006B7A7E /* AboutViewController.h */,
+				C9A39B54171728FE006B7A7E /* AboutViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C9CAA694164C05DE00B07497 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C91F03E81645E3B000B78DD7 /* Ball.h */,
+				C91F03E91645E3B000B78DD7 /* Ball.m */,
+				C9E61F8F1646FE9500804578 /* KappenballObstacles.h */,
+				C9E61F901646FE9500804578 /* KappenballObstacles.m */,
+				C9E2B88D164829980065FCF5 /* KappenballStoryboard.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C91F03B11645689B00B78DD7 /* Kappenball */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91F03D61645689B00B78DD7 /* Build configuration list for PBXNativeTarget "Kappenball" */;
+			buildPhases = (
+				C91F03AE1645689B00B78DD7 /* Sources */,
+				C91F03AF1645689B00B78DD7 /* Frameworks */,
+				C91F03B01645689B00B78DD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kappenball;
+			productName = Kappenball;
+			productReference = C91F03B21645689B00B78DD7 /* Kappenball.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C91F03A91645689B00B78DD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Kappenball;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Matthew Woodruff";
+			};
+			buildConfigurationList = C91F03AC1645689B00B78DD7 /* Build configuration list for PBXProject "Kappenball" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C91F03A71645689B00B78DD7;
+			productRefGroup = C91F03B31645689B00B78DD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C91F03B11645689B00B78DD7 /* Kappenball */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C91F03B01645689B00B78DD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91F03C11645689B00B78DD7 /* InfoPlist.strings in Resources */,
+				C91F03DC16456C8900B78DD7 /* slider1.png in Resources */,
+				C91F03DE16456C8E00B78DD7 /* slider2.png in Resources */,
+				C91F03E016456C9300B78DD7 /* thumb.png in Resources */,
+				C9E2B88E164829980065FCF5 /* KappenballStoryboard.storyboard in Resources */,
+				C95624D51651110700DB616F /* SuccessBallSound.caf in Resources */,
+				C95624D91651141500DB616F /* DeadBallSound.caf in Resources */,
+				C95624DD16512EB400DB616F /* kappenballGames.sql in Resources */,
+				C967BE7916579FD300538864 /* FingerGlow.png in Resources */,
+				C9A39B5717172E44006B7A7E /* about.html in Resources */,
+				C9DDF3C3171762FF00AEEDE7 /* WallHitSound.caf in Resources */,
+				C9135C181719DA12005A928C /* ball.png in Resources */,
+				C9135C1A1719E19B005A928C /* Default.png in Resources */,
+				C9135C1C1719E26B005A928C /* Default@2x.png in Resources */,
+				C9135C1E1719E29D005A928C /* Default-568h@2x.png in Resources */,
+				C92520FC1777426E008AB8B4 /* App-Icon.png in Resources */,
+				C92520FE17774271008AB8B4 /* App-Icon@2x.png in Resources */,
+				C97E489417784F0C0003F970 /* field@1x.png in Resources */,
+				C97E489617784F1C0003F970 /* field@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C91F03AE1645689B00B78DD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91F03C31645689B00B78DD7 /* main.m in Sources */,
+				C91F03C71645689B00B78DD7 /* KappenballAppDelegate.m in Sources */,
+				C91F03D01645689B00B78DD7 /* KappenballViewController.m in Sources */,
+				C91F03EA1645E3B000B78DD7 /* Ball.m in Sources */,
+				C9E61F911646FE9500804578 /* KappenballObstacles.m in Sources */,
+				C9E2B89116482ABC0065FCF5 /* HomeViewController.m in Sources */,
+				C9E2B8941648301F0065FCF5 /* LeaderboardViewController.m in Sources */,
+				C9E2B8971648309A0065FCF5 /* PauseGameViewController.m in Sources */,
+				C9D7448616499909000773D4 /* Directions.c in Sources */,
+				C9CAA68E164C051100B07497 /* KappenballGame.m in Sources */,
+				C9CAA69A164C178100B07497 /* BallStates.c in Sources */,
+				C98C14F1164E827800B5C8EF /* KappenballGamesHistory.m in Sources */,
+				C98C150C164F229500B5C8EF /* EnergyTableViewController.m in Sources */,
+				C98C150F164F26B000B5C8EF /* AverageEnergyTableViewController.m in Sources */,
+				C96F0E08164FB9D30090B471 /* PlayerNameViewController.m in Sources */,
+				C9A39B55171728FE006B7A7E /* AboutViewController.m in Sources */,
+				C932E7531778A4F40085C115 /* KappenballAttempt.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C91F03BF1645689B00B78DD7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C91F03C01645689B00B78DD7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C91F03D41645689B00B78DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Kappenball-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		C91F03D51645689B00B78DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Kappenball-Bridging-Header.h";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C91F03D71645689B00B78DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kappenball/Kappenball-Prefix.pch";
+				INFOPLIST_FILE = "Kappenball/Kappenball-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kappenball/Kappenball-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C91F03D81645689B00B78DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kappenball/Kappenball-Prefix.pch";
+				INFOPLIST_FILE = "Kappenball/Kappenball-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kappenball/Kappenball-Bridging-Header.h";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C91F03AC1645689B00B78DD7 /* Build configuration list for PBXProject "Kappenball" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91F03D41645689B00B78DD7 /* Debug */,
+				C91F03D51645689B00B78DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C91F03D61645689B00B78DD7 /* Build configuration list for PBXNativeTarget "Kappenball" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91F03D71645689B00B78DD7 /* Debug */,
+				C91F03D81645689B00B78DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C91F03A91645689B00B78DD7 /* Project object */;
+}

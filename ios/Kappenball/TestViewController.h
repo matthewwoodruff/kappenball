@@ -1,0 +1,17 @@
+//
+//  TestViewController.h
+//  Kappenball
+//
+//  Created by Matthew Woodruff on 10/11/2012.
+//  Copyright (c) 2012 Matthew Woodruff. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "KappenballGamesHistory.h"
+
+@interface TestViewController : UIViewController <UITableViewDataSource>
+
+@property(nonatomic, weak) IBOutlet UITableView *table;
+@property(nonatomic, weak) KappenballGamesHistory *gamesHistory;
+
+@end
