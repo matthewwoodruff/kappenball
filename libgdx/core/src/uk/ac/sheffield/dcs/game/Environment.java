@@ -37,16 +37,16 @@ public class Environment extends Actor {
 
         worldRegister = new WorldRegister(world).height(height).width(width);
 
-        within(worldRegister).x(.03f).y(.14f).width(.2f).height(.02f).build(SPIKE);
-        within(worldRegister).x(.32f).y(.14f).width(.36f).height(.02f).build(SPIKE);
-        within(worldRegister).x(.77f).y(.14f).width(.20f).height(.02f).build(SPIKE);
+        within(worldRegister).x(.033f).y(.14f).width(.2f).height(.02f).build(SPIKE);
+        within(worldRegister).x(.325f).y(.14f).width(.337f).height(.02f).build(SPIKE);
+        within(worldRegister).x(.766f).y(.14f).width(.20f).height(.02f).build(SPIKE);
 
-        within(worldRegister).width(.03f).height(1).build(WALL);
-        within(worldRegister).x(.97f).width(.03f).height(1).build(WALL);
-        within(worldRegister).x(.22f).width(.01f).height(.14f).build(WALL);
-        within(worldRegister).x(.32f).width(.01f).height(.14f).build(WALL);
-        within(worldRegister).x(.67f).width(.01f).height(.14f).build(WALL);
-        within(worldRegister).x(.77f).width(.01f).height(.14f).build(WALL);
+        within(worldRegister).width(.033f).height(1).build(WALL);
+        within(worldRegister).x(.223f).width(.01f).height(.14f).build(WALL);
+        within(worldRegister).x(.325f).width(.01f).height(.14f).build(WALL);
+        within(worldRegister).x(.652f).width(.01f).height(.14f).build(WALL);
+        within(worldRegister).x(.766f).width(.01f).height(.14f).build(WALL);
+        within(worldRegister).x(.966f).width(.034f).height(1).build(WALL);
 
         within(worldRegister).y(-.02f).width(1).height(.02f).build(END);
 
