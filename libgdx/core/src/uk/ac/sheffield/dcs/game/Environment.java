@@ -15,7 +15,7 @@ public class Environment extends Actor {
 
     private static final Vector2 GRAVITY = new Vector2(0, 0);
     private static final float TIME_STEP = 1f / 300f;
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     private final Texture img = new Texture("field.png");
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();

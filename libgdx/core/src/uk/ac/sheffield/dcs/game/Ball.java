@@ -14,7 +14,8 @@ public class Ball {
     private static final float RANDOM_NUMBER_BETWEEN_MINUS_20_AND_20 = 0.0f;
 
     private final Body body;
-    private final float textureDiameter;
+    private final float size;
+    private final float halfSize;
     private GameInputFacade input;
     private final Texture texture = new Texture("ball.png");
     private boolean dying;
@@ -23,7 +24,8 @@ public class Ball {
 
     public Ball(Body body, float radius) {
         this.body = body;
-        this.textureDiameter = radius * 4;
+        this.halfSize = radius * 2;
+        this.size = radius * 4;
     }
 
     public void setBallListener(BallListener ballListener) {
@@ -53,7 +55,7 @@ public class Ball {
 
     public void render(Batch batch) {
         Vector2 position = body.getPosition();
-        batch.draw(texture, position.x, position.y, textureDiameter, textureDiameter);
+        batch.draw(texture, position.x - halfSize, position.y - halfSize, size, size);
     }
 
     public void dispose() {
