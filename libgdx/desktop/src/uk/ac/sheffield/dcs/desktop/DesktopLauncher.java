@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Kappenball";
         config.width = 900;
-        config.height = 450;
+        config.height = 500;
         config.resizable = true;
         new LwjglApplication(new KappenballGame(), config);
 	}

@@ -16,27 +16,25 @@ import uk.ac.sheffield.dcs.game.Environment;
 public class GameScreen extends ScreenAdapter {
 
     private static final int WIDTH = 100;
-    private static final int HEIGHT = 50;
+    private static final int HEIGHT = 60;
 
     private final OrthographicCamera camera = new OrthographicCamera();
     private final Stage stage;
 
     public GameScreen() {
         DefaultGameInputFacade inputFacade = new DefaultGameInputFacade();
-        Environment environment = new Environment(inputFacade, WIDTH, HEIGHT);
+        Environment environment = new Environment(inputFacade, WIDTH, HEIGHT-10);
 
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.font = new BitmapFont();
 
-        TextButton button1 = new TextButton("Button 1", style);
-
-        Container<Environment> environmentContainer = new Container<>(environment).maxHeight(200f);
+        Container<Environment> environmentContainer = new Container<>(environment);
 
         environmentContainer.setDebug(true);
 
-        HorizontalGroup top = new HorizontalGroup().top();
+        HorizontalGroup top = new HorizontalGroup();
         top.setHeight(5);
-        HorizontalGroup bottom = new HorizontalGroup().bottom();
+        HorizontalGroup bottom = new HorizontalGroup();
         bottom.setHeight(5);
 
         stage = new Stage(new FitViewport(WIDTH, HEIGHT, camera));
@@ -44,7 +42,6 @@ public class GameScreen extends ScreenAdapter {
         stage.addActor(top);
         stage.addActor(bottom);
         stage.addActor(environmentContainer);
-//        bottom.addActor(button1);
     }
 
     @Override
