@@ -2,12 +2,15 @@ package uk.ac.sheffield.dcs.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import static uk.ac.sheffield.dcs.game.FixtureType.*;
+import static uk.ac.sheffield.dcs.game.FixtureType.END;
+import static uk.ac.sheffield.dcs.game.FixtureType.SPIKE;
+import static uk.ac.sheffield.dcs.game.FixtureType.WALL;
 import static uk.ac.sheffield.dcs.game.ObstacleBuilder.within;
 
 
@@ -17,21 +20,25 @@ public class Environment extends Actor {
     private static final float TIME_STEP = 1f / 300f;
     private static final boolean DEBUG = false;
 
-    private final Texture img = new Texture("field.png");
+    private final Sprite img = new Sprite(new Texture("field.png"));
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private final World world = new World(GRAVITY, true);
 
     private final GameInputFacade inputFacade;
-    private final float width;
-    private final float height;
     private final WorldRegister worldRegister;
 
     private Ball ball;
 
-    public Environment(GameInputFacade inputFacade, float width, float height) {
+    public Environment(GameInputFacade inputFacade, int width, int height) {
+        super();
+
+        setWidth(width);
+        setHeight(height);
+
+        // TODO: Setting the origin shouldn't be done here
+        img.setBounds(0,5,width,height);
+
         this.inputFacade = inputFacade;
-        this.width = width;
-        this.height = height;
 
         world.setContactListener(new GameContactListener());
 
@@ -75,7 +82,7 @@ public class Environment extends Actor {
         if(DEBUG) {
             debugRenderer.render(world, batch.getProjectionMatrix());
         } else {
-            batch.draw(img, 0, 0, width, height);
+            img.draw(batch);
             ball.render(batch);
         }
     }
@@ -87,11 +94,5 @@ public class Environment extends Actor {
             ball.updateVelocity(TIME_STEP);
             world.step(TIME_STEP, 6, 2);
         }
-    }
-
-    public void dispose() {
-        img.dispose();
-        world.dispose();
-        ball.dispose();
     }
 }
