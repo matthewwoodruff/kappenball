@@ -1,4 +1,4 @@
-package uk.ac.sheffield.dcs.screen;
+package uk.ac.sheffield.dcs.game;
 
 public interface BallListener {
     void succeeded();
