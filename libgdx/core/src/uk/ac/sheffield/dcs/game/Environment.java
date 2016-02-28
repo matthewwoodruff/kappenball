@@ -2,6 +2,7 @@ package uk.ac.sheffield.dcs.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -20,11 +21,8 @@ public class Environment extends Actor {
     private static final Vector2 GRAVITY = new Vector2(0, 0);
     private static final float TIME_STEP = 1f / 300f;
 
-    private static final int WIDTH = 100;
-    private static final int HEIGHT = 50;
-
     private final Texture img = new Texture("field.png");
-    private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
+    private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
     private final World world = new World(GRAVITY, true);
 
     private final GameInputFacade inputFacade;
@@ -32,8 +30,8 @@ public class Environment extends Actor {
 
     private Ball ball;
 
-    public Environment(GameInputFacade inputFacade, InputListener inputListener) {
-        setBounds(0, 0, WIDTH, HEIGHT);
+    public Environment(GameInputFacade inputFacade, InputListener inputListener, int width, int height) {
+        setBounds(0, 0, width, height);
         setTouchable(enabled);
         addListener(inputListener);
 
@@ -42,7 +40,7 @@ public class Environment extends Actor {
 
         world.setContactListener(new GameContactListener());
 
-        worldRegister = new WorldRegister(world).height(HEIGHT).width(WIDTH);
+        worldRegister = new WorldRegister(world).height(height).width(width);
 
         within(worldRegister).x(.033f).y(.14f).width(.2f).height(.02f).build(SPIKE);
         within(worldRegister).x(.325f).y(.14f).width(.337f).height(.02f).build(SPIKE);
@@ -79,8 +77,9 @@ public class Environment extends Actor {
         super.draw(batch, parentAlpha);
         if (!ball.isAlive())
             initialiseBall();
-        if(false) {
-            debugRenderer.render(world, batch.getProjectionMatrix());
+        if(getDebug()) {
+            Matrix4 mul = batch.getProjectionMatrix().mul(batch.getTransformMatrix());
+            debugRenderer.render(world, mul);
         } else {
             batch.draw(img, getX(), getY(), getWidth(), getHeight());
             ball.render(batch);

@@ -22,7 +22,7 @@ public class GameScreen extends ScreenAdapter {
 
     public GameScreen() {
         DefaultGameInputFacade inputFacade = new DefaultGameInputFacade();
-        Environment environment = new Environment(inputFacade, new GameInputListener());
+        Environment environment = new Environment(inputFacade, new GameInputListener(), 100, 50);
 
         Group group = new Group();
 
