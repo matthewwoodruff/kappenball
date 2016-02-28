@@ -30,17 +30,17 @@ public class GameScreen extends ScreenAdapter {
         group.setPosition(0, 5);
 
         HorizontalGroup top = new HorizontalGroup();
-        top.setOrigin(0,55);
+        top.setOrigin(0, 55);
         top.setHeight(5);
         HorizontalGroup bottom = new HorizontalGroup();
-        bottom.setOrigin(0,0);
+        bottom.setOrigin(0, 0);
         bottom.setHeight(5);
 
         stage = new Stage(new FitViewport(WIDTH, HEIGHT, camera));
         stage.addActor(top);
         stage.addActor(bottom);
         stage.addActor(group);
-        stage.setDebugAll(true);
+        stage.setDebugAll(false);
 
 //        Gdx.input.setInputProcessor(stage);
 //        stage.setKeyboardFocus(environment);

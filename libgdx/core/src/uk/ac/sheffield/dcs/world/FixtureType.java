@@ -1,4 +1,4 @@
-package uk.ac.sheffield.dcs.game;
+package uk.ac.sheffield.dcs.world;
 
 public enum FixtureType {
     WALL,

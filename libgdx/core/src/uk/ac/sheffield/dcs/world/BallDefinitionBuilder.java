@@ -1,9 +1,10 @@
-package uk.ac.sheffield.dcs.game;
+package uk.ac.sheffield.dcs.world;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import uk.ac.sheffield.dcs.game.Ball;
 
-import static uk.ac.sheffield.dcs.game.FixtureType.*;
+import static uk.ac.sheffield.dcs.world.FixtureType.*;
 
 public class BallDefinitionBuilder {
 

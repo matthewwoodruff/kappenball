@@ -8,12 +8,14 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import uk.ac.sheffield.dcs.world.BallDefinitionBuilder;
+import uk.ac.sheffield.dcs.world.WorldRegister;
 
 import static com.badlogic.gdx.scenes.scene2d.Touchable.enabled;
-import static uk.ac.sheffield.dcs.game.FixtureType.END;
-import static uk.ac.sheffield.dcs.game.FixtureType.SPIKE;
-import static uk.ac.sheffield.dcs.game.FixtureType.WALL;
-import static uk.ac.sheffield.dcs.game.ObstacleBuilder.within;
+import static uk.ac.sheffield.dcs.world.FixtureType.END;
+import static uk.ac.sheffield.dcs.world.FixtureType.SPIKE;
+import static uk.ac.sheffield.dcs.world.FixtureType.WALL;
+import static uk.ac.sheffield.dcs.world.ObstacleBuilder.within;
 
 
 public class Environment extends Actor {
@@ -34,7 +36,6 @@ public class Environment extends Actor {
         setBounds(0, 0, width, height);
         setTouchable(enabled);
         addListener(inputListener);
-
 
         this.inputFacade = inputFacade;
 
@@ -77,7 +78,7 @@ public class Environment extends Actor {
         super.draw(batch, parentAlpha);
         if (!ball.isAlive())
             initialiseBall();
-        if(getDebug()) {
+        if (getDebug()) {
             Matrix4 mul = batch.getProjectionMatrix().mul(batch.getTransformMatrix());
             debugRenderer.render(world, mul);
         } else {
@@ -94,6 +95,4 @@ public class Environment extends Actor {
             world.step(TIME_STEP, 6, 2);
         }
     }
-
-
 }

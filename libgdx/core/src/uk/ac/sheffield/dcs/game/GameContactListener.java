@@ -1,8 +1,9 @@
 package uk.ac.sheffield.dcs.game;
 
 import com.badlogic.gdx.physics.box2d.*;
+import uk.ac.sheffield.dcs.world.FixtureType;
 
-import static uk.ac.sheffield.dcs.game.FixtureType.*;
+import static uk.ac.sheffield.dcs.world.FixtureType.*;
 
 public class GameContactListener implements ContactListener {
 

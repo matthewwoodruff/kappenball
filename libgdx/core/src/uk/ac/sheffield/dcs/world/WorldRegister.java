@@ -1,4 +1,4 @@
-package uk.ac.sheffield.dcs.game;
+package uk.ac.sheffield.dcs.world;
 
 import com.badlogic.gdx.physics.box2d.World;
 
