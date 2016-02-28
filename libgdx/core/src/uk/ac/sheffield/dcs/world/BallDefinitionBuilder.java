@@ -1,10 +1,14 @@
 package uk.ac.sheffield.dcs.world;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import uk.ac.sheffield.dcs.game.Ball;
 
-import static uk.ac.sheffield.dcs.world.FixtureType.*;
+import static uk.ac.sheffield.dcs.world.FixtureType.BALL;
 
 public class BallDefinitionBuilder {
 
@@ -16,6 +20,10 @@ public class BallDefinitionBuilder {
 
     public BallDefinitionBuilder(WorldRegister worldRegister) {
         this.worldRegister = worldRegister;
+    }
+
+    public static BallDefinitionBuilder within(WorldRegister world) {
+        return new BallDefinitionBuilder(world);
     }
 
     public BallDefinitionBuilder x(float x) {
@@ -61,13 +69,10 @@ public class BallDefinitionBuilder {
         Fixture fixture = body.createFixture(fixtureDef);
         fixture.setUserData(BALL);
         circle.dispose();
-        Ball ball = new Ball(body, radius);
+        Vector2 initialPosition = new Vector2(x, y);
+        Ball ball = new Ball(body, initialPosition, radius, initialVelocity);
         body.setUserData(ball);
         return ball;
-    }
-
-    public static BallDefinitionBuilder within(WorldRegister world) {
-        return new BallDefinitionBuilder(world);
     }
 
 }

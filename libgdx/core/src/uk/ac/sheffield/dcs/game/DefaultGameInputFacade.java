@@ -12,15 +12,15 @@ public class DefaultGameInputFacade implements GameInputFacade {
 
     @Override
     public boolean screenPressedRight() {
-        return screenPressed(input) && 2*input.getX() > graphics.getWidth() || input.isKeyPressed(LEFT);
+        return screenPressed(input) && 2 * input.getX() > graphics.getWidth() || input.isKeyPressed(LEFT);
     }
 
     @Override
     public boolean screenPressedLeft() {
-        return (screenPressed(input) && 2*input.getX() <= graphics.getWidth()) || input.isKeyPressed(RIGHT);
+        return (screenPressed(input) && 2 * input.getX() <= graphics.getWidth()) || input.isKeyPressed(RIGHT);
     }
 
     private boolean screenPressed(Input input) {
-        return input.isTouched() ||  input.isButtonPressed(Buttons.LEFT);
+        return input.isTouched() || input.isButtonPressed(Buttons.LEFT);
     }
 }

@@ -42,9 +42,8 @@ public class GameScreen extends ScreenAdapter {
         stage.addActor(group);
         stage.setDebugAll(false);
 
-//        Gdx.input.setInputProcessor(stage);
-//        stage.setKeyboardFocus(environment);
-
+        Gdx.input.setInputProcessor(stage);
+        stage.setKeyboardFocus(environment);
     }
 
     @Override

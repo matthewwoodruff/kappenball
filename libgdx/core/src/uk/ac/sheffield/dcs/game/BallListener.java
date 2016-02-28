@@ -1,6 +1,6 @@
 package uk.ac.sheffield.dcs.game;
 
 public interface BallListener {
-    void succeeded();
+    void ended();
     void spiked();
 }

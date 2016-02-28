@@ -11,18 +11,22 @@ public class Ball {
     private static final float ACCELERATION = 50f;
     private static final float RANDOM_INPUT = 0.0f;
     private static final float RANDOM_NUMBER_BETWEEN_MINUS_20_AND_20 = 0.0f;
+    private static final Texture texture = new Texture("ball.png");
 
     private final Body body;
+    private final Vector2 initialPosition;
+    private final Vector2 initialVelocity;
     private final float size;
     private final float halfSize;
     private GameInputFacade input;
-    private final Texture texture = new Texture("ball.png");
-    private boolean dying;
+
     private boolean dead;
     private BallListener ballListener;
 
-    public Ball(Body body, float radius) {
+    public Ball(Body body, Vector2 initialPosition, float radius, Vector2 initialVelocity) {
         this.body = body;
+        this.initialPosition = initialPosition;
+        this.initialVelocity = initialVelocity;
         this.halfSize = radius * 2;
         this.size = radius * 4;
     }
@@ -40,7 +44,7 @@ public class Ball {
 
         Vector2 linearVelocity = body.getLinearVelocity();
 
-        float decayedVelocity = linearVelocity.x * (1-(DECAY_RATE * delta));
+        float decayedVelocity = linearVelocity.x * (1 - (DECAY_RATE * delta));
         float randomVelocity = RANDOM_INPUT * RANDOM_NUMBER_BETWEEN_MINUS_20_AND_20;
 
         float newXVelocity = decayedVelocity + accelerationInterval + randomVelocity;
@@ -66,18 +70,28 @@ public class Ball {
     }
 
     public void spike() {
-        dying = true;
+        die();
         if (ballListener != null)
             ballListener.spiked();
     }
 
     public boolean isAlive() {
-        return !(dead || dying);
+        return !dead;
     }
 
     public void end() {
-        dead = true;
+        die();
         if (ballListener != null)
-            ballListener.succeeded();
+            ballListener.ended();
+    }
+
+    private void die() {
+        dead = true;
+    }
+
+    public void reset() {
+        dead = false;
+        body.setLinearVelocity(initialVelocity);
+        body.setTransform(initialPosition, 0);
     }
 }

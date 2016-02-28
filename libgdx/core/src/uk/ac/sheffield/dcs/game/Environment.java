@@ -27,7 +27,6 @@ public class Environment extends Actor {
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
     private final World world = new World(GRAVITY, true);
 
-    private final GameInputFacade inputFacade;
     private final WorldRegister worldRegister;
 
     private Ball ball;
@@ -36,8 +35,6 @@ public class Environment extends Actor {
         setBounds(0, 0, width, height);
         setTouchable(enabled);
         addListener(inputListener);
-
-        this.inputFacade = inputFacade;
 
         world.setContactListener(new GameContactListener());
 
@@ -56,14 +53,6 @@ public class Environment extends Actor {
 
         within(worldRegister).y(-.02f).width(1).height(.02f).build(END);
 
-        initialiseBall();
-    }
-
-    private void initialiseBall() {
-        if (ball != null) {
-            world.destroyBody(ball.getBody());
-            ball.dispose();
-        }
         ball = BallDefinitionBuilder.within(worldRegister)
                 .x(.5f)
                 .y(1)
@@ -77,7 +66,7 @@ public class Environment extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         if (!ball.isAlive())
-            initialiseBall();
+            ball.reset();
         if (getDebug()) {
             Matrix4 mul = batch.getProjectionMatrix().mul(batch.getTransformMatrix());
             debugRenderer.render(world, mul);

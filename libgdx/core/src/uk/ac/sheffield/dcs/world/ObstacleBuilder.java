@@ -17,6 +17,10 @@ public class ObstacleBuilder {
         this.worldRegister = worldRegister;
     }
 
+    public static ObstacleBuilder within(WorldRegister world) {
+        return new ObstacleBuilder(world);
+    }
+
     public ObstacleBuilder x(float x) {
         this.x = worldRegister.getWidth() * x;
         return this;
@@ -53,9 +57,5 @@ public class ObstacleBuilder {
         fixture.setUserData(type);
         box.dispose();
         return fixture;
-    }
-
-    public static ObstacleBuilder within(WorldRegister world) {
-        return new ObstacleBuilder(world);
     }
 }
