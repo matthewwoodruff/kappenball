@@ -2,12 +2,13 @@ package uk.ac.sheffield.dcs.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 
+import static com.badlogic.gdx.scenes.scene2d.Touchable.enabled;
 import static uk.ac.sheffield.dcs.game.FixtureType.END;
 import static uk.ac.sheffield.dcs.game.FixtureType.SPIKE;
 import static uk.ac.sheffield.dcs.game.FixtureType.WALL;
@@ -18,9 +19,11 @@ public class Environment extends Actor {
 
     private static final Vector2 GRAVITY = new Vector2(0, 0);
     private static final float TIME_STEP = 1f / 300f;
-    private static final boolean DEBUG = false;
 
-    private final Sprite img = new Sprite(new Texture("field.png"));
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 50;
+
+    private final Texture img = new Texture("field.png");
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
     private final World world = new World(GRAVITY, true);
 
@@ -29,20 +32,17 @@ public class Environment extends Actor {
 
     private Ball ball;
 
-    public Environment(GameInputFacade inputFacade, int width, int height) {
-        super();
+    public Environment(GameInputFacade inputFacade, InputListener inputListener) {
+        setBounds(0, 0, WIDTH, HEIGHT);
+        setTouchable(enabled);
+        addListener(inputListener);
 
-        setWidth(width);
-        setHeight(height);
-
-        // TODO: Setting the origin shouldn't be done here
-        img.setBounds(0,5,width,height);
 
         this.inputFacade = inputFacade;
 
         world.setContactListener(new GameContactListener());
 
-        worldRegister = new WorldRegister(world).height(height).width(width);
+        worldRegister = new WorldRegister(world).height(HEIGHT).width(WIDTH);
 
         within(worldRegister).x(.033f).y(.14f).width(.2f).height(.02f).build(SPIKE);
         within(worldRegister).x(.325f).y(.14f).width(.337f).height(.02f).build(SPIKE);
@@ -79,10 +79,10 @@ public class Environment extends Actor {
         super.draw(batch, parentAlpha);
         if (!ball.isAlive())
             initialiseBall();
-        if(DEBUG) {
+        if(false) {
             debugRenderer.render(world, batch.getProjectionMatrix());
         } else {
-            img.draw(batch);
+            batch.draw(img, getX(), getY(), getWidth(), getHeight());
             ball.render(batch);
         }
     }
@@ -95,4 +95,6 @@ public class Environment extends Actor {
             world.step(TIME_STEP, 6, 2);
         }
     }
+
+
 }

@@ -4,12 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import uk.ac.sheffield.dcs.game.DefaultGameInputFacade;
 import uk.ac.sheffield.dcs.game.Environment;
+import uk.ac.sheffield.dcs.game.GameInputListener;
 
 public class GameScreen extends ScreenAdapter {
 
@@ -21,10 +22,12 @@ public class GameScreen extends ScreenAdapter {
 
     public GameScreen() {
         DefaultGameInputFacade inputFacade = new DefaultGameInputFacade();
-        Environment environment = new Environment(inputFacade, 100, 50);
+        Environment environment = new Environment(inputFacade, new GameInputListener());
 
-        Container<Environment> environmentContainer = new Container<>(environment);
-        environmentContainer.setBounds(0,5,WIDTH,HEIGHT-10);
+        Group group = new Group();
+
+        group.addActor(environment);
+        group.setPosition(0, 5);
 
         HorizontalGroup top = new HorizontalGroup();
         top.setOrigin(0,55);
@@ -36,8 +39,12 @@ public class GameScreen extends ScreenAdapter {
         stage = new Stage(new FitViewport(WIDTH, HEIGHT, camera));
         stage.addActor(top);
         stage.addActor(bottom);
-        stage.addActor(environmentContainer);
+        stage.addActor(group);
         stage.setDebugAll(true);
+
+//        Gdx.input.setInputProcessor(stage);
+//        stage.setKeyboardFocus(environment);
+
     }
 
     @Override
