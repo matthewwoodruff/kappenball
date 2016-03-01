@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import uk.ac.sheffield.dcs.world.BallDefinitionBuilder;
 import uk.ac.sheffield.dcs.world.WorldRegister;
 
@@ -31,7 +30,7 @@ public class Environment extends Actor {
 
     private Ball ball;
 
-    public Environment(GameInputFacade inputFacade, InputListener inputListener, int width, int height) {
+    public Environment(GameInputListener inputListener, int width, int height) {
         setBounds(0, 0, width, height);
         setTouchable(enabled);
         addListener(inputListener);
@@ -59,7 +58,7 @@ public class Environment extends Actor {
                 .initialVelocity(0, -.2f)
                 .radius(.02f)
                 .build();
-        ball.setInput(inputFacade);
+        ball.setInput(inputListener);
     }
 
     @Override

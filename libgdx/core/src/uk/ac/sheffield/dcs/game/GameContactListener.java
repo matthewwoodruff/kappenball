@@ -11,7 +11,7 @@ import static uk.ac.sheffield.dcs.world.FixtureType.BALL;
 import static uk.ac.sheffield.dcs.world.FixtureType.END;
 import static uk.ac.sheffield.dcs.world.FixtureType.SPIKE;
 
-public class GameContactListener implements ContactListener {
+public class GameContactListener implements Contact§Listener {
 
     @Override
     public void beginContact(Contact contact) {

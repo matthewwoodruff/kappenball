@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import uk.ac.sheffield.dcs.game.DefaultGameInputFacade;
 import uk.ac.sheffield.dcs.game.Environment;
 import uk.ac.sheffield.dcs.game.GameInputListener;
 
@@ -16,16 +15,14 @@ import static java.lang.Math.round;
 
 public class GameScreen extends ScreenAdapter {
 
-    private final OrthographicCamera camera = new OrthographicCamera();
     private final Stage stage;
 
-    public GameScreen(int width, int height) {
+    public GameScreen(final int width, final int height) {
 
-        DefaultGameInputFacade inputFacade = new DefaultGameInputFacade();
         int environmentHeight = round(height * .75f);
 
         Environment environment =
-                new Environment(inputFacade, new GameInputListener(), width, environmentHeight);
+                new Environment(new GameInputListener(), width, environmentHeight);
 
         int menuHeight = round((height - environmentHeight) * .5f);
 
@@ -43,6 +40,7 @@ public class GameScreen extends ScreenAdapter {
 //        Slider slider = new Slider(0, 100, 0.5f, false, (Skin) null);
 //        slider.
 
+        OrthographicCamera camera = new OrthographicCamera();
         stage = new Stage(new FitViewport(width, height, camera));
         stage.addActor(top);
         stage.addActor(bottom);

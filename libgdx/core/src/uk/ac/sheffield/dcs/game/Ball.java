@@ -31,10 +31,6 @@ public class Ball {
         this.size = radius * 4;
     }
 
-    public void setBallListener(BallListener ballListener) {
-        this.ballListener = ballListener;
-    }
-
     public void setInput(GameInputFacade input) {
         this.input = input;
     }
@@ -59,14 +55,6 @@ public class Ball {
     public void render(Batch batch) {
         Vector2 position = body.getPosition();
         batch.draw(texture, position.x - halfSize, position.y - halfSize, size, size);
-    }
-
-    public void dispose() {
-        texture.dispose();
-    }
-
-    public Body getBody() {
-        return body;
     }
 
     public void spike() {
