@@ -12,35 +12,42 @@ import uk.ac.sheffield.dcs.game.DefaultGameInputFacade;
 import uk.ac.sheffield.dcs.game.Environment;
 import uk.ac.sheffield.dcs.game.GameInputListener;
 
-public class GameScreen extends ScreenAdapter {
+import static java.lang.Math.round;
 
-    private static final int WIDTH = 100;
-    private static final int HEIGHT = 60;
+public class GameScreen extends ScreenAdapter {
 
     private final OrthographicCamera camera = new OrthographicCamera();
     private final Stage stage;
 
-    public GameScreen() {
+    public GameScreen(int width, int height) {
+
         DefaultGameInputFacade inputFacade = new DefaultGameInputFacade();
-        Environment environment = new Environment(inputFacade, new GameInputListener(), 100, 50);
+        int environmentHeight = round(height * .75f);
+
+        Environment environment =
+                new Environment(inputFacade, new GameInputListener(), width, environmentHeight);
+
+        int menuHeight = round((height - environmentHeight) * .5f);
 
         Group group = new Group();
-
         group.addActor(environment);
-        group.setPosition(0, 5);
+        group.setPosition(0, menuHeight);
 
         HorizontalGroup top = new HorizontalGroup();
-        top.setOrigin(0, 55);
-        top.setHeight(5);
+        top.setOrigin(0, height - menuHeight);
+        top.setHeight(menuHeight);
         HorizontalGroup bottom = new HorizontalGroup();
         bottom.setOrigin(0, 0);
-        bottom.setHeight(5);
+        bottom.setHeight(menuHeight);
 
-        stage = new Stage(new FitViewport(WIDTH, HEIGHT, camera));
+//        Slider slider = new Slider(0, 100, 0.5f, false, (Skin) null);
+//        slider.
+
+        stage = new Stage(new FitViewport(width, height, camera));
         stage.addActor(top);
         stage.addActor(bottom);
         stage.addActor(group);
-        stage.setDebugAll(false);
+        stage.setDebugAll(true);
 
         Gdx.input.setInputProcessor(stage);
         stage.setKeyboardFocus(environment);

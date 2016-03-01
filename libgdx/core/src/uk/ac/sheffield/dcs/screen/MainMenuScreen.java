@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import static com.badlogic.gdx.Input.Keys.ANY_KEY;
+import static com.badlogic.gdx.Input.Keys.SPACE;
 
 public class MainMenuScreen extends ScreenAdapter {
 
@@ -19,6 +20,7 @@ public class MainMenuScreen extends ScreenAdapter {
     private final OrthographicCamera camera = new OrthographicCamera();
 
     private GameStartListener gameStartListener;
+    private ConfigurationStartListener configurationStartListener;
 
     public MainMenuScreen(SpriteBatch batch) {
 //        new Skin();
@@ -41,17 +43,25 @@ public class MainMenuScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 //        stage.draw();
-        font.draw(batch, "Press any key to continue...", 100, 50);
+        font.draw(batch, "Press space to start game key to continue...", 100, 50);
         batch.end();
 
-        if ((Gdx.input.isKeyPressed(ANY_KEY) || Gdx.input.isTouched()) && gameStartListener != null) {
-            gameStartListener.launchGame();
+        if (Gdx.input.isKeyPressed(SPACE) && configurationStartListener != null) {
+            configurationStartListener.startConfiguration();
+            dispose();
+        }
+        else if ((Gdx.input.isKeyPressed(ANY_KEY) || Gdx.input.isTouched()) && gameStartListener != null) {
+            gameStartListener.startGame();
             dispose();
         }
     }
 
     public void setGameStartListener(GameStartListener gameStartListener) {
         this.gameStartListener = gameStartListener;
+    }
+
+    public void setConfigurationStartListener(ConfigurationStartListener configurationStartListener) {
+        this.configurationStartListener = configurationStartListener;
     }
 
     @Override
