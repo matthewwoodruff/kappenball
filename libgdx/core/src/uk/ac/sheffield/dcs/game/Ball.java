@@ -64,7 +64,11 @@ public class Ball {
     }
 
     public boolean isAlive() {
-        return !dead;
+        return !isDead();
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 
     public void end() {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import uk.ac.sheffield.dcs.game.configuration.KappenballConfiguration;
 import uk.ac.sheffield.dcs.world.BallDefinitionBuilder;
 import uk.ac.sheffield.dcs.world.WorldRegister;
 
@@ -26,18 +27,22 @@ public class Environment extends Actor {
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
     private final World world = new World(GRAVITY, true);
 
-    private final WorldRegister worldRegister;
-
     private Ball ball;
 
-    public Environment(GameInputListener inputListener, int width, int height) {
+    public Environment(KappenballConfiguration config) {
+        int width = config.getWidth();
+        int height = config.getHeight();
+
         setBounds(0, 0, width, height);
         setTouchable(enabled);
-        addListener(inputListener);
+
+        GameInputListener gameInputListener = new GameInputListener();
+
+        addListener(gameInputListener);
 
         world.setContactListener(new GameContactListener());
 
-        worldRegister = new WorldRegister(world).height(height).width(width);
+        WorldRegister worldRegister = new WorldRegister(world).height(height).width(width);
 
         within(worldRegister).x(.033f).y(.14f).width(.2f).height(.02f).build(SPIKE);
         within(worldRegister).x(.325f).y(.14f).width(.337f).height(.02f).build(SPIKE);
@@ -52,19 +57,20 @@ public class Environment extends Actor {
 
         within(worldRegister).y(-.02f).width(1).height(.02f).build(END);
 
-        ball = BallDefinitionBuilder.within(worldRegister)
+        ball = BallDefinitionBuilder
+                .within(worldRegister)
                 .x(.5f)
                 .y(1)
                 .initialVelocity(0, -.2f)
                 .radius(.02f)
                 .build();
-        ball.setInput(inputListener);
+        ball.setInput(gameInputListener);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        if (!ball.isAlive())
+        if (ball.isDead())
             ball.reset();
         if (getDebug()) {
             Matrix4 mul = batch.getProjectionMatrix().mul(batch.getTransformMatrix());

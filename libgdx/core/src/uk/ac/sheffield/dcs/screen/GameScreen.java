@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import uk.ac.sheffield.dcs.game.Environment;
-import uk.ac.sheffield.dcs.game.GameInputListener;
+import uk.ac.sheffield.dcs.game.configuration.KappenballConfiguration;
 
 import static java.lang.Math.round;
 
@@ -22,7 +22,7 @@ public class GameScreen extends ScreenAdapter {
         int environmentHeight = round(height * .75f);
 
         Environment environment =
-                new Environment(new GameInputListener(), width, environmentHeight);
+                new Environment(new KappenballConfiguration(width, environmentHeight));
 
         int menuHeight = round((height - environmentHeight) * .5f);
 
