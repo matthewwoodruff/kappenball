@@ -4,6 +4,11 @@ import com.badlogic.gdx.math.Vector2;
 
 public class KappenballConfiguration implements BallConfiguration {
 
+    private static final float DECAY_RATE = 0f;
+    private static final float ACCELERATION = 50f;
+    private static final float INTERVENTION_ACCELERATION = 30f;
+    private static final int INTERVENTIONS_PER_SECOND = 5;
+
     private final int width;
     private final int height;
 
@@ -22,31 +27,36 @@ public class KappenballConfiguration implements BallConfiguration {
 
     @Override
     public Vector2 getInitialVelocity() {
-        return null;
+        return new Vector2(0, -.2f * height);
     }
 
     @Override
     public Vector2 getInitialPosition() {
-        return null;
+        return new Vector2(.5f * width, 1f * height);
     }
 
     @Override
     public float getDecayRate() {
-        return 0;
+        return DECAY_RATE;
     }
 
     @Override
     public float getAcceleration() {
-        return 0;
+        return ACCELERATION;
     }
 
     @Override
-    public float getRandomInput() {
-        return 0;
+    public float getInterventionAcceleration() {
+        return INTERVENTION_ACCELERATION;
     }
 
     @Override
-    public float getRandomNumberBetween20AndMinus20() {
-        return 0;
+    public float getRadius() {
+        return 0.025f * height;
+    }
+
+    @Override
+    public int getInterventionsPerSecond() {
+        return INTERVENTIONS_PER_SECOND;
     }
 }

@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import uk.ac.sheffield.dcs.game.configuration.KappenballConfiguration;
-import uk.ac.sheffield.dcs.world.BallDefinitionBuilder;
+import uk.ac.sheffield.dcs.world.BallBuilder;
 import uk.ac.sheffield.dcs.world.WorldRegister;
 
 import static com.badlogic.gdx.scenes.scene2d.Touchable.enabled;
@@ -57,12 +57,9 @@ public class Environment extends Actor {
 
         within(worldRegister).y(-.02f).width(1).height(.02f).build(END);
 
-        ball = BallDefinitionBuilder
+        ball = BallBuilder
                 .within(worldRegister)
-                .x(.5f)
-                .y(1)
-                .initialVelocity(0, -.2f)
-                .radius(.02f)
+                .configuration(config)
                 .build();
         ball.setInput(gameInputListener);
     }

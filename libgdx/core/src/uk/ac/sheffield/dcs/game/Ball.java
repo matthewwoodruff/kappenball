@@ -4,16 +4,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import uk.ac.sheffield.dcs.game.configuration.BallConfiguration;
+
+import static java.lang.Math.random;
 
 public class Ball {
 
-    private static final float DECAY_RATE = 0.7f;
-    private static final float ACCELERATION = 50f;
-    private static final float RANDOM_INPUT = 0.0f;
-    private static final float RANDOM_NUMBER_BETWEEN_MINUS_20_AND_20 = 0.0f;
     private static final Texture texture = new Texture("ball.png");
 
     private final Body body;
+    private final float decayRate;
+    private final float acceleration;
+    private final float interventionAcceleration;
+    private final int interventionsPerSecond;
     private final Vector2 initialPosition;
     private final Vector2 initialVelocity;
     private final float size;
@@ -21,14 +24,23 @@ public class Ball {
     private GameInputFacade input;
 
     private boolean dead;
+    private float currentInterveningAcceleration;
     private BallListener ballListener;
 
-    public Ball(Body body, Vector2 initialPosition, float radius, Vector2 initialVelocity) {
+    public Ball(Body body, BallConfiguration configuration) {
         this.body = body;
-        this.initialPosition = initialPosition;
-        this.initialVelocity = initialVelocity;
+        this.initialPosition = configuration.getInitialPosition();
+        this.initialVelocity = configuration.getInitialVelocity();
+        this.decayRate = configuration.getDecayRate();
+        this.acceleration = configuration.getAcceleration();
+        this.interventionAcceleration = configuration.getInterventionAcceleration();
+        this.interventionsPerSecond = configuration.getInterventionsPerSecond();
+
+        float radius = configuration.getRadius();
         this.halfSize = radius * 2;
         this.size = radius * 4;
+
+        reset();
     }
 
     public void setInput(GameInputFacade input) {
@@ -36,20 +48,33 @@ public class Ball {
     }
 
     public void updateVelocity(float delta) {
-        float accelerationInterval = getAcceleration() * delta;
-
         Vector2 linearVelocity = body.getLinearVelocity();
 
-        float decayedVelocity = linearVelocity.x * (1 - (DECAY_RATE * delta));
-        float randomVelocity = RANDOM_INPUT * RANDOM_NUMBER_BETWEEN_MINUS_20_AND_20;
+        float accelerationInterval = getAcceleration() * delta;
+        if (accelerationInterval == 0 && currentInterveningAcceleration == 0)
+            linearVelocity.x *= decayRate * (1 - delta);
 
-        float newXVelocity = decayedVelocity + accelerationInterval + randomVelocity;
+        if (canIntervene(delta)) {
+            updateIntervention();
+        }
+
+        float currentInterveningAccelerationInterval = currentInterveningAcceleration * delta;
+
+        float newXVelocity = linearVelocity.x + accelerationInterval + currentInterveningAccelerationInterval;
 
         body.setLinearVelocity(newXVelocity, linearVelocity.y);
     }
 
+    private void updateIntervention() {
+        currentInterveningAcceleration = currentInterveningAcceleration != 0 ? 0 : random() > .5 ? interventionAcceleration : -interventionAcceleration;
+    }
+
+    private boolean canIntervene(float delta) {
+        return random() > (1 - (delta * interventionsPerSecond)) && random() > (currentInterveningAcceleration != 0 ? .5 : .2);
+    }
+
     private float getAcceleration() {
-        return input == null ? 0 : input.screenPressedLeft() ? ACCELERATION : input.screenPressedRight() ? -ACCELERATION : 0;
+        return input == null ? 0 : input.screenPressedLeft() ? acceleration : input.screenPressedRight() ? -acceleration : 0;
     }
 
     public void render(Batch batch) {
