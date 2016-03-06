@@ -4,10 +4,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class KappenballConfiguration implements BallConfiguration {
 
-    private static final float DECAY_RATE = 0f;
+    private static final float DECAY_RATE = .999f;
     private static final float ACCELERATION = 50f;
-    private static final float INTERVENTION_ACCELERATION = 30f;
-    private static final int INTERVENTIONS_PER_SECOND = 5;
+    private static final float INTERVENTION_ACCELERATION = 0f;
+    private static final int INTERVENTIONS_PER_SECOND = 0;
 
     private final int width;
     private final int height;
@@ -58,5 +58,15 @@ public class KappenballConfiguration implements BallConfiguration {
     @Override
     public int getInterventionsPerSecond() {
         return INTERVENTIONS_PER_SECOND;
+    }
+
+    @Override
+    public float getInterventionPersistenceProbability() {
+        return .5f;
+    }
+
+    @Override
+    public float getInterventionChangeProbability() {
+        return .2f;
     }
 }

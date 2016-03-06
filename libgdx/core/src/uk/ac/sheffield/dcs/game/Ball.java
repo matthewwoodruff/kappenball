@@ -13,30 +13,18 @@ public class Ball {
     private static final Texture texture = new Texture("ball.png");
 
     private final Body body;
-    private final float decayRate;
-    private final float acceleration;
-    private final float interventionAcceleration;
-    private final int interventionsPerSecond;
-    private final Vector2 initialPosition;
-    private final Vector2 initialVelocity;
+    private final BallConfiguration config;
     private final float size;
     private final float halfSize;
     private GameInputFacade input;
 
     private boolean dead;
-    private float currentInterveningAcceleration;
-    private BallListener ballListener;
+    private float interventionMultiplier;
 
-    public Ball(Body body, BallConfiguration configuration) {
+    public Ball(Body body, BallConfiguration config) {
         this.body = body;
-        this.initialPosition = configuration.getInitialPosition();
-        this.initialVelocity = configuration.getInitialVelocity();
-        this.decayRate = configuration.getDecayRate();
-        this.acceleration = configuration.getAcceleration();
-        this.interventionAcceleration = configuration.getInterventionAcceleration();
-        this.interventionsPerSecond = configuration.getInterventionsPerSecond();
-
-        float radius = configuration.getRadius();
+        this.config = config;
+        float radius = config.getRadius();
         this.halfSize = radius * 2;
         this.size = radius * 4;
 
@@ -48,17 +36,17 @@ public class Ball {
     }
 
     public void updateVelocity(float delta) {
-        Vector2 linearVelocity = body.getLinearVelocity();
+        final Vector2 linearVelocity = body.getLinearVelocity();
 
         float accelerationInterval = getAcceleration() * delta;
-        if (accelerationInterval == 0 && currentInterveningAcceleration == 0)
-            linearVelocity.x *= decayRate * (1 - delta);
 
-        if (canIntervene(delta)) {
-            updateIntervention();
-        }
+        if (shouldIntervene(delta)) updateIntervention();
 
-        float currentInterveningAccelerationInterval = currentInterveningAcceleration * delta;
+        float currentInterveningAccelerationInterval =
+                interventionMultiplier * config.getInterventionAcceleration() * delta;
+
+        if (accelerationInterval == 0 && currentInterveningAccelerationInterval == 0)
+            linearVelocity.x *= config.getDecayRate() * (1 - delta);
 
         float newXVelocity = linearVelocity.x + accelerationInterval + currentInterveningAccelerationInterval;
 
@@ -66,26 +54,36 @@ public class Ball {
     }
 
     private void updateIntervention() {
-        currentInterveningAcceleration = currentInterveningAcceleration != 0 ? 0 : random() > .5 ? interventionAcceleration : -interventionAcceleration;
+        interventionMultiplier = interventionMultiplier != 0 ? 0 : random() > .5 ? 1 : -1;
     }
 
-    private boolean canIntervene(float delta) {
-        return random() > (1 - (delta * interventionsPerSecond)) && random() > (currentInterveningAcceleration != 0 ? .5 : .2);
+    private boolean shouldIntervene(float delta) {
+        return shouldTriggerIntervention(delta) && shouldChangeInterventionForCurrentState();
+    }
+
+    private boolean shouldTriggerIntervention(float delta) {
+        float interventionsPerSecond = config.getInterventionsPerSecond();
+        return random() > (1 - (delta * interventionsPerSecond));
+    }
+
+    private boolean shouldChangeInterventionForCurrentState() {
+        float interventionPersistenceProbability = config.getInterventionPersistenceProbability();
+        float interventionChangeProbability = config.getInterventionChangeProbability();
+        return random() > (interventionMultiplier != 0 ? interventionPersistenceProbability : interventionChangeProbability);
     }
 
     private float getAcceleration() {
+        float acceleration = config.getAcceleration();
         return input == null ? 0 : input.screenPressedLeft() ? acceleration : input.screenPressedRight() ? -acceleration : 0;
     }
 
     public void render(Batch batch) {
-        Vector2 position = body.getPosition();
+        final Vector2 position = body.getPosition();
         batch.draw(texture, position.x - halfSize, position.y - halfSize, size, size);
     }
 
     public void spike() {
         die();
-        if (ballListener != null)
-            ballListener.spiked();
     }
 
     public boolean isAlive() {
@@ -98,8 +96,6 @@ public class Ball {
 
     public void end() {
         die();
-        if (ballListener != null)
-            ballListener.ended();
     }
 
     private void die() {
@@ -108,7 +104,7 @@ public class Ball {
 
     public void reset() {
         dead = false;
-        body.setLinearVelocity(initialVelocity);
-        body.setTransform(initialPosition, 0);
+        body.setLinearVelocity(config.getInitialVelocity());
+        body.setTransform(config.getInitialPosition(), 0);
     }
 }

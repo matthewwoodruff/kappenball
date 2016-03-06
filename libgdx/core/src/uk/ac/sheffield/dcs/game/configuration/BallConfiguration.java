@@ -10,4 +10,6 @@ public interface BallConfiguration {
     float getInterventionAcceleration();
     float getRadius();
     int getInterventionsPerSecond();
+    float getInterventionPersistenceProbability();
+    float getInterventionChangeProbability();
 }
