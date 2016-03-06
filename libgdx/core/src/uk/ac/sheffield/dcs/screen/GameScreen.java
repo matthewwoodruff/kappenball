@@ -37,6 +37,12 @@ public class GameScreen extends ScreenAdapter {
         bottom.setOrigin(0, 0);
         bottom.setHeight(menuHeight);
 
+//        new TextureAtlas();
+//
+//        new Skin();
+//
+//        new TextField()
+
 //        Slider slider = new Slider(0, 100, 0.5f, false, (Skin) null);
 //        slider.
 
