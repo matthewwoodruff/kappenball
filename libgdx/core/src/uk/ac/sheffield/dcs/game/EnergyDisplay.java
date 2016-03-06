@@ -22,6 +22,7 @@ public class EnergyDisplay extends Actor implements BallListener {
         FreeTypeFontGenerator freeTypeFontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Noteworthy.ttc"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 60;
+        parameter.genMipMaps = true;
         font = freeTypeFontGenerator.generateFont(parameter);
         font.getData().setScale(0.07f, 0.07f);
         freeTypeFontGenerator.dispose();
@@ -30,7 +31,7 @@ public class EnergyDisplay extends Actor implements BallListener {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        font.draw(batch, Integer.toString((int) energy), 0, getY() + (getHeight() * .7f));
+        font.draw(batch, Integer.toString((int) energy), 1, getY() + (getHeight() * .7f));
     }
 
     @Override
