@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import uk.ac.sheffield.dcs.game.EnergyDisplay;
 import uk.ac.sheffield.dcs.game.Environment;
 import uk.ac.sheffield.dcs.game.Slider;
 import uk.ac.sheffield.dcs.game.configuration.KappenballConfiguration;
@@ -20,11 +21,12 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen(final int width, final int height) {
 
         int environmentHeight = round(height * .75f);
-
-        KappenballConfiguration config = new KappenballConfiguration(width, environmentHeight);
-        Environment environment = new Environment(config);
-
         int menuHeight = round((height - environmentHeight) * .5f);
+
+        EnergyDisplay energyDisplay = new EnergyDisplay((width - menuHeight) * .5f, environmentHeight + menuHeight, menuHeight, menuHeight);
+        
+        KappenballConfiguration config = new KappenballConfiguration(width, environmentHeight);
+        Environment environment = new Environment(config, energyDisplay);
 
         Group group = new Group();
         group.addActor(environment);
@@ -37,6 +39,7 @@ public class GameScreen extends ScreenAdapter {
         stage = new Stage(new FitViewport(width, height, camera));
         stage.addActor(slider);
         stage.addActor(group);
+        stage.addActor(energyDisplay);
         stage.setDebugAll(false);
 
         Gdx.input.setInputProcessor(stage);

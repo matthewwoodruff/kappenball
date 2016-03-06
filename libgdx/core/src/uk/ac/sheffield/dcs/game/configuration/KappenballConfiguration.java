@@ -7,10 +7,10 @@ public class KappenballConfiguration implements BallConfiguration, SliderListene
 
     private static final float DECAY_RATE = .999f;
     private static final float ACCELERATION = 50f;
-    private static final float INTERVENTION_ACCELERATION_MAX = 15f;
+    private static final float INTERVENTION_ACCELERATION_MAX = 20f;
     private static final int INTERVENTIONS_PER_SECOND = 5;
-    public static final float INTERVENTION_PERSISTENCE = .3f;
-    public static final float INTERVENTION_CHANGE = .3f;
+    public static final float INTERVENTION_PERSISTENCE = .4f;
+    public static final float INTERVENTION_CHANGE = .6f;
 
     private final int width;
     private final int height;

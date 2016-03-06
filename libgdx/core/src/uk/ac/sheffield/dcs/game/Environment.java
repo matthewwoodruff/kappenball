@@ -29,7 +29,7 @@ public class Environment extends Actor {
 
     private Ball ball;
 
-    public Environment(KappenballConfiguration config) {
+    public Environment(KappenballConfiguration config, BallListener ballListener) {
         int width = config.getWidth();
         int height = config.getHeight();
 
@@ -62,6 +62,7 @@ public class Environment extends Actor {
                 .configuration(config)
                 .build();
         ball.setInput(gameInputListener);
+        ball.setBallListener(ballListener);
     }
 
     @Override

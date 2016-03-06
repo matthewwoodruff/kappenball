@@ -20,6 +20,7 @@ public class Ball {
 
     private boolean dead;
     private float interventionMultiplier;
+    private BallListener ballListener;
 
     public Ball(Body body, BallConfiguration config) {
         this.body = body;
@@ -49,6 +50,9 @@ public class Ball {
             linearVelocity.x *= config.getDecayRate() * (1 - delta);
 
         float newXVelocity = linearVelocity.x + accelerationInterval + currentInterveningAccelerationInterval;
+
+        if (accelerationInterval != 0 && ballListener != null)
+            ballListener.energyExpended(delta);
 
         body.setLinearVelocity(newXVelocity, linearVelocity.y);
     }
@@ -84,6 +88,7 @@ public class Ball {
 
     public void spike() {
         die();
+        if (ballListener != null) ballListener.spiked();
     }
 
     public boolean isAlive() {
@@ -96,6 +101,7 @@ public class Ball {
 
     public void end() {
         die();
+        if (ballListener != null) ballListener.ended();
     }
 
     private void die() {
@@ -106,5 +112,9 @@ public class Ball {
         dead = false;
         body.setLinearVelocity(config.getInitialVelocity());
         body.setTransform(config.getInitialPosition(), 0);
+    }
+
+    public void setBallListener(BallListener ballListener) {
+        this.ballListener = ballListener;
     }
 }
