@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import uk.ac.sheffield.dcs.game.Environment;
+import uk.ac.sheffield.dcs.game.Slider;
 import uk.ac.sheffield.dcs.game.configuration.KappenballConfiguration;
 
 import static java.lang.Math.round;
@@ -21,8 +21,8 @@ public class GameScreen extends ScreenAdapter {
 
         int environmentHeight = round(height * .75f);
 
-        Environment environment =
-                new Environment(new KappenballConfiguration(width, environmentHeight));
+        KappenballConfiguration config = new KappenballConfiguration(width, environmentHeight);
+        Environment environment = new Environment(config);
 
         int menuHeight = round((height - environmentHeight) * .5f);
 
@@ -30,26 +30,12 @@ public class GameScreen extends ScreenAdapter {
         group.addActor(environment);
         group.setPosition(0, menuHeight);
 
-        HorizontalGroup top = new HorizontalGroup();
-        top.setOrigin(0, height - menuHeight);
-        top.setHeight(menuHeight);
-        HorizontalGroup bottom = new HorizontalGroup();
-        bottom.setOrigin(0, 0);
-        bottom.setHeight(menuHeight);
-
-//        new TextureAtlas();
-//
-//        new Skin();
-//
-//        new TextField()
-
-//        Slider slider = new Slider(0, 100, 0.5f, false, (Skin) null);
-//        slider.
+        Slider slider = new Slider(25, 2, 50, 5);
+        slider.setSliderListener(config);
 
         OrthographicCamera camera = new OrthographicCamera();
         stage = new Stage(new FitViewport(width, height, camera));
-        stage.addActor(top);
-        stage.addActor(bottom);
+        stage.addActor(slider);
         stage.addActor(group);
         stage.setDebugAll(false);
 

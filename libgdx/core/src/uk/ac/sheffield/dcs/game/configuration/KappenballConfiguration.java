@@ -1,16 +1,21 @@
 package uk.ac.sheffield.dcs.game.configuration;
 
 import com.badlogic.gdx.math.Vector2;
+import uk.ac.sheffield.dcs.game.SliderListener;
 
-public class KappenballConfiguration implements BallConfiguration {
+public class KappenballConfiguration implements BallConfiguration, SliderListener {
 
     private static final float DECAY_RATE = .999f;
     private static final float ACCELERATION = 50f;
-    private static final float INTERVENTION_ACCELERATION = 0f;
-    private static final int INTERVENTIONS_PER_SECOND = 0;
+    private static final float INTERVENTION_ACCELERATION_MAX = 15f;
+    private static final int INTERVENTIONS_PER_SECOND = 5;
+    public static final float INTERVENTION_PERSISTENCE = .3f;
+    public static final float INTERVENTION_CHANGE = .3f;
 
     private final int width;
     private final int height;
+
+    private float interventionAcceleration;
 
     public KappenballConfiguration(int width, int height) {
         this.width = width;
@@ -47,7 +52,7 @@ public class KappenballConfiguration implements BallConfiguration {
 
     @Override
     public float getInterventionAcceleration() {
-        return INTERVENTION_ACCELERATION;
+        return interventionAcceleration;
     }
 
     @Override
@@ -62,11 +67,16 @@ public class KappenballConfiguration implements BallConfiguration {
 
     @Override
     public float getInterventionPersistenceProbability() {
-        return .5f;
+        return INTERVENTION_PERSISTENCE;
     }
 
     @Override
     public float getInterventionChangeProbability() {
-        return .2f;
+        return INTERVENTION_CHANGE;
+    }
+
+    @Override
+    public void sliderChanged(float value) {
+        interventionAcceleration = INTERVENTION_ACCELERATION_MAX * value;
     }
 }
