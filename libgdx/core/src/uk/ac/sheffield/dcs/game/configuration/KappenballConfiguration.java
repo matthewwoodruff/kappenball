@@ -5,7 +5,7 @@ import uk.ac.sheffield.dcs.game.SliderListener;
 
 public class KappenballConfiguration implements BallConfiguration, SliderListener {
 
-    private static final float DECAY_RATE = .999f;
+    private static final float DECAY_RATE = .9f;
     private static final float ACCELERATION = 50f;
     private static final float INTERVENTION_ACCELERATION_MAX = 20f;
     private static final int INTERVENTIONS_PER_SECOND = 5;

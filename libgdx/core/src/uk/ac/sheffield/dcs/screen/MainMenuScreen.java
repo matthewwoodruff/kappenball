@@ -31,11 +31,11 @@ public class MainMenuScreen extends ScreenAdapter {
         batch.end();
 
         if (Gdx.input.isKeyPressed(SPACE) && configurationStartListener != null) {
-            configurationStartListener.startConfiguration();
+          gameStartListener.startGame();
             dispose();
         }
         else if ((Gdx.input.isKeyPressed(ANY_KEY) || Gdx.input.isTouched()) && gameStartListener != null) {
-            gameStartListener.startGame();
+          configurationStartListener.startConfiguration();
             dispose();
         }
     }
