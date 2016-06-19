@@ -2,9 +2,9 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        ballPrefab: {
+        ball: {
             default: null,
-            type: cc.Prefab
+            type: cc.Node
         }
     },
 
@@ -13,32 +13,32 @@ cc.Class({
         var Manager = cc.director.getCollisionManager();
         Manager.enabled = true;
         // Manager.enabledDebugDraw = true;
-        this.spawnNewBall();
-        
-        this.node.on(cc.Node.EventType.TOUCH_START, this.touchStart, this);
-        this.node.on(cc.Node.EventType.TOUCH_END, this.touchEnd, this);
-    },
-
-    spawnNewBall: function() {
-        this.ball = cc.instantiate(this.ballPrefab);
-        this.node.addChild(this.ball);
+        // this.spawnNewBall();
         
         this.ball.on('spiked', this.ballSpiked, this);
         this.ball.on('succeeded', this.ballSucceeded, this);
     },
+
+    // spawnNewBall: function() {
+    //     this.ball = cc.instantiate(this.ballPrefab);
+    //     this.node.addChild(this.ball);
+        
+    //     this.ball.on('spiked', this.ballSpiked, this);
+    //     this.ball.on('succeeded', this.ballSucceeded, this);
+    // },
     
     ballSpiked: function() {
-        this.spawnNewBall();
+        // this.spawnNewBall();
     },
     
     ballSucceeded: function() {
-        this.spawnNewBall();
+        // this.spawnNewBall();
     },
     
     touchStart: function(event) {
         var x = this.node.convertToNodeSpace(event.getLocation()).x;
-        var forceDirection = x >= this.node.getContentSize().width * 0.5 ? "forceLeft" : "forceRight"; 
-        this.ball.getComponent('Ball')[forceDirection]();
+        var direction = x >= this.node.getContentSize().width * 0.5 ? "left" : "right"; 
+        this.ball.getComponent('Ball')[direction]();
     },
     
     touchEnd: function(event) {
