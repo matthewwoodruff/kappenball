@@ -10,6 +10,6 @@ cc.Class({
     },
     
     onCollisionExit: function (ball) {
-        ball.node.getComponent('Ball').boundsExit();
+        ball.node.getComponent('Ball').succeed();
     }
 });

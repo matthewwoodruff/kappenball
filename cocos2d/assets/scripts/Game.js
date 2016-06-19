@@ -26,7 +26,7 @@ cc.Class({
         this.spawnNewBall();
     },
     
-    ballExited: function() {
+    ballSucceeded: function() {
         this.spawnNewBall();
     }
 

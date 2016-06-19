@@ -61,9 +61,9 @@ cc.Class({
         this.inFreeSpace = true;
     },
     
-    boundsExit: function() {
+    succeed: function() {
         this.node.destroy(); 
-        this.listener.ballExited();
+        this.listener.ballSucceeded();
     },
     
     setListener: function(listener) {
