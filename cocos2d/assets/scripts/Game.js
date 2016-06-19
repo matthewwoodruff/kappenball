@@ -12,7 +12,7 @@ cc.Class({
     onLoad: function () {
         var Manager = cc.director.getCollisionManager();
         Manager.enabled = true;
-        Manager.enabledDebugDraw = true;
+        // Manager.enabledDebugDraw = true;
         this.spawnNewBall();
     },
 
