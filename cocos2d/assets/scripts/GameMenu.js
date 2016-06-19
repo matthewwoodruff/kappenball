@@ -9,8 +9,8 @@ cc.Class({
         
     },
     
-    startGame: function() {
-        cc.director.loadScene("Game");
+    endGame: function() {
+        cc.director.loadScene("Main Menu");
     },
 
     // called every frame, uncomment this function to activate update callback
