@@ -67,15 +67,15 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 900,
-      "height": 600
+      "width": 1088,
+      "height": 612
     },
     "_children": [
       {
         "__id__": 3
       },
       {
-        "__id__": 37
+        "__id__": 38
       }
     ],
     "_rotationX": 0,
@@ -84,8 +84,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 450,
-      "y": 300
+      "x": 544,
+      "y": 306
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -98,7 +98,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 38
+        "__id__": 40
       }
     ],
     "_prefab": null,
@@ -127,8 +127,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 900,
+      "height": 450
     },
     "_children": [
       {
@@ -172,7 +172,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 30
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -186,6 +186,9 @@
     "_components": [
       {
         "__id__": 36
+      },
+      {
+        "__id__": 37
       }
     ],
     "_prefab": null,
@@ -225,7 +228,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -7
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -304,7 +307,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -330,
-      "y": -163
+      "y": -170
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -389,7 +392,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -5,
-      "y": -163
+      "y": -170
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -474,7 +477,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 332,
-      "y": -162
+      "y": -169
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -559,7 +562,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -435,
-      "y": 0
+      "y": -7
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -644,7 +647,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 435,
-      "y": 0
+      "y": -7
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -729,7 +732,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -259,
-      "y": -200
+      "y": -207
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -814,7 +817,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -138,
-      "y": -200
+      "y": -207
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -899,7 +902,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 259,
-      "y": -200
+      "y": -207
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -984,7 +987,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 131,
-      "y": -200
+      "y": -207
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1069,7 +1072,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -230
+      "y": -237
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1133,15 +1136,26 @@
     }
   },
   {
+    "__type__": "cc.Mask",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "_type": 0,
+    "_segements": 3
+  },
+  {
     "__type__": "cc.Node",
     "_name": "controls",
     "_objFlags": 0,
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -1166,7 +1180,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -225
+      "y": -250
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1177,9 +1191,37 @@
     "_reorderChildDirty": false,
     "_id": "8a8dd5uec1E0IeDZCT9y95E",
     "_active": true,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 39
+      }
+    ],
     "_prefab": null,
     "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 38
+    },
+    "_enabled": true,
+    "_spriteFrame": null,
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
   },
   {
     "__type__": "cc.Canvas",
@@ -1191,8 +1233,8 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 900,
-      "height": 600
+      "width": 1088,
+      "height": 612
     },
     "_fitWidth": true,
     "_fitHeight": true

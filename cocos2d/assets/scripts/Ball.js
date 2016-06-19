@@ -5,7 +5,7 @@ cc.Class({
     },
 
     onLoad: function () {
-        this.ySpeed = -50;
+        this.ySpeed = -100;
         this.xSpeed = 0;
         this.acceleration = 0;
         this.setInputControl();
