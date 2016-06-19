@@ -14,12 +14,17 @@ cc.Class({
         Manager.enabled = true;
         // Manager.enabledDebugDraw = true;
         this.spawnNewBall();
+        
+        this.node.on(cc.Node.EventType.TOUCH_START, this.touchStart, this);
+        this.node.on(cc.Node.EventType.TOUCH_END, this.touchEnd, this);
     },
 
     spawnNewBall: function() {
-        var newBall = cc.instantiate(this.ballPrefab);
-        this.node.addChild(newBall);
-        newBall.getComponent('Ball').setListener(this);
+        this.ball = cc.instantiate(this.ballPrefab);
+        this.node.addChild(this.ball);
+        
+        this.ball.on('spiked', this.ballSpiked, this);
+        this.ball.on('succeeded', this.ballSucceeded, this);
     },
     
     ballSpiked: function() {
@@ -28,10 +33,15 @@ cc.Class({
     
     ballSucceeded: function() {
         this.spawnNewBall();
+    },
+    
+    touchStart: function(event) {
+        var x = this.node.convertToNodeSpace(event.getLocation()).x;
+        var forceDirection = x >= this.node.getContentSize().width * 0.5 ? "forceLeft" : "forceRight"; 
+        this.ball.getComponent('Ball')[forceDirection]();
+    },
+    
+    touchEnd: function(event) {
+        this.ball.getComponent('Ball').stopForce();
     }
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });
