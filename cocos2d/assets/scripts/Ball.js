@@ -9,33 +9,28 @@ cc.Class({
 
     properties: {
         yVelocity: -100,
-        xVelocity: 200,
-        gameArea: {
-            default: null,
-            type: cc.Node
-        }
+        xVelocity: 200
     },
 
     onLoad: function () {
+        this._energy = 0;
         this._initialPosition = this.node.getPosition();
         this._direction = Direction.NONE;
-        this.gameArea.on(cc.Node.EventType.TOUCH_START, this._touchStart, this);
-        this.gameArea.on(cc.Node.EventType.TOUCH_END, this._stopForce, this);
     },
     
     update: function (dt) {
         this.node.y += this.yVelocity * dt;
-        this.node.x += this.xVelocity * this._direction * dt;
+        var dx = this.xVelocity * this._direction * dt;
+        this.node.x += dx;
+        this._energy += Math.abs(dx);
     },
     
     spike: function() {
         this._reset();
-        this.node.emit('spiked');
     },
     
     succeed: function() {
         this._reset();
-        this.node.emit('succeeded');
     },
     
     wallEnter: function() {
@@ -47,17 +42,25 @@ cc.Class({
         delete this._blocked;
     },
     
-    _touchStart: function(event) {
-        var inRightHalf = this.gameArea.convertToNodeSpace(event.getLocation()).x >= this.gameArea.getContentSize().width * 0.5;
-        this._setDirection(inRightHalf ? Direction.LEFT : Direction.RIGHT);
+    getEnergy: function() {
+        return this._energy;
+    },
+    
+    left: function() {
+        this._setDirection(Direction.LEFT);
+    },
+    
+    right: function() {
+        this._setDirection(Direction.RIGHT);
+    },
+    
+    stopForce: function() {
+        this._setDirection(Direction.NONE);
     },
     
     _reset: function () {
+        this._energy = 0;
         this.node.setPosition(this._initialPosition.x, this._initialPosition.y);
-    },
-    
-    _stopForce: function() {
-        this._setDirection(Direction.NONE);
     },
     
     _setDirection: function(direction) {

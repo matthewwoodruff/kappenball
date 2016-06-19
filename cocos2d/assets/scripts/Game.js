@@ -5,43 +5,31 @@ cc.Class({
         ball: {
             default: null,
             type: cc.Node
+        },
+        energy: {
+            default: null,
+            type: cc.Label
         }
     },
 
-    // use this for initialization
     onLoad: function () {
-        var Manager = cc.director.getCollisionManager();
-        Manager.enabled = true;
-        // Manager.enabledDebugDraw = true;
-        // this.spawnNewBall();
+        cc.director.getCollisionManager().enabled = true;
         
-        this.ball.on('spiked', this.ballSpiked, this);
-        this.ball.on('succeeded', this.ballSucceeded, this);
-    },
-
-    // spawnNewBall: function() {
-    //     this.ball = cc.instantiate(this.ballPrefab);
-    //     this.node.addChild(this.ball);
-        
-    //     this.ball.on('spiked', this.ballSpiked, this);
-    //     this.ball.on('succeeded', this.ballSucceeded, this);
-    // },
-    
-    ballSpiked: function() {
-        // this.spawnNewBall();
+        this._ball = this.ball.getComponent('Ball');
+        this.node.on(cc.Node.EventType.TOUCH_START, this._touchStart, this);
+        this.node.on(cc.Node.EventType.TOUCH_END, this._stopForce, this);
     },
     
-    ballSucceeded: function() {
-        // this.spawnNewBall();
+    _touchStart: function(event) {
+        var inRightHalf = this.node.convertToNodeSpace(event.getLocation()).x >= this.node.getContentSize().width * 0.5;
+        this._ball[inRightHalf ? 'left' : 'right']();
     },
     
-    touchStart: function(event) {
-        var x = this.node.convertToNodeSpace(event.getLocation()).x;
-        var direction = x >= this.node.getContentSize().width * 0.5 ? "left" : "right"; 
-        this.ball.getComponent('Ball')[direction]();
+    _stopForce: function() {
+        this._ball.stopForce();
     },
     
-    touchEnd: function(event) {
-        this.ball.getComponent('Ball').stopForce();
+    update: function() {
+        this.energy.string = 'Energy: ' + Math.ceil(this._ball.getEnergy());
     }
 });
