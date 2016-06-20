@@ -1,4 +1,4 @@
 
 module.exports = {
-    velocity: 10
+    stochasticity: 20
 }
