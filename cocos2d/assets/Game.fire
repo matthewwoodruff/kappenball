@@ -1953,7 +1953,7 @@
     "target": {
       "__id__": 45
     },
-    "component": "Controls",
+    "component": "GameControls",
     "handler": "increase"
   },
   {
@@ -2181,7 +2181,7 @@
     "target": {
       "__id__": 45
     },
-    "component": "Controls",
+    "component": "GameControls",
     "handler": "decrease"
   },
   {
