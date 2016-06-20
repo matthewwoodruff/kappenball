@@ -3,11 +3,6 @@ cc.Class({
 
     properties: {},
 
-    // use this for initialization
-    onLoad: function () {
-
-    },
-    
     onCollisionEnter: function (ball, other) {
         ball.node.getComponent('Ball').wallEnter();
     },

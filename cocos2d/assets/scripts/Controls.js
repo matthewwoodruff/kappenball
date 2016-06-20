@@ -15,16 +15,15 @@ cc.Class({
     
     increase: function() {
         this._uncertainty = Math.min(this._uncertainty + 10, 100);
-        this.uncertaintyDisplay.string = this._uncertainty;
+        this._updateUncertainty();
     },
 
     decrease: function() {
         this._uncertainty = Math.max(this._uncertainty - 10, 0);
-        this.uncertaintyDisplay.string = this._uncertainty;
+        this._updateUncertainty();
     },
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+    
+    _updateUncertainty: function () {
+        this.uncertaintyDisplay.string = this._uncertainty;
+    }
 });
