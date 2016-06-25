@@ -9,22 +9,22 @@ cc.Class({
             type: cc.Label
         }
     },
-    
+
     onLoad: function() {
         this._updateUncertainty();
     },
 
     increase: function() {
-        settings.stochasticity = Math.min(settings.stochasticity + 10, 100);
+        settings.increaseStochasticity();
         this._updateUncertainty();
     },
 
     decrease: function() {
-        settings.stochasticity = Math.max(settings.stochasticity - 10, 0);
+        settings.decreaseStochasticity();
         this._updateUncertainty();
     },
-    
+
     _updateUncertainty: function () {
-        this.uncertaintyDisplay.string = settings.stochasticity;
+        this.uncertaintyDisplay.string = settings.getStochasticity().toFixed(1);
     }
 });
