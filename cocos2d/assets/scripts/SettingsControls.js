@@ -15,35 +15,31 @@ cc.Class({
     },
 
     onLoad: function() {
-      this._updateDisplay();
+      this._updateDisplay(this.maxInterventionDisplay, settings.getMaxInterventionProbability());
+      this._updateDisplay(this.maxStabilityDisplay, settings.getMaxStabilityProbability());
     },
 
     back: function() {
-        cc.director.loadScene("Game");
+      cc.director.loadScene("Game");
     },
 
     increaseMaxInterventionProbability: function() {
-        settings.increaseMaxInterventionProbability();
-        this._updateDisplay();
+      this._updateDisplay(this.maxInterventionDisplay, settings.increaseMaxInterventionProbability());
     },
 
     decreaseMaxInterventionProbability: function() {
-        settings.decreaseMaxInterventionProbability();
-        this._updateDisplay();
+      this._updateDisplay(this.maxInterventionDisplay, settings.decreaseMaxInterventionProbability());
     },
 
     increaseMaxStabilityProbability: function() {
-        settings.increaseMaxStabilityProbability();
-        this._updateDisplay();
+      this._updateDisplay(this.maxStabilityDisplay, settings.increaseMaxStabilityProbability());
     },
 
     decreaseMaxStabilityProbability: function() {
-        settings.decreaseMaxStabilityProbability();
-        this._updateDisplay();
+      this._updateDisplay(this.maxStabilityDisplay, settings.decreaseMaxStabilityProbability());
     },
 
-    _updateDisplay: function () {
-        this.maxInterventionDisplay.string = settings.getMaxInterventionProbability().toFixed(1);
-        this.maxStabilityDisplay.string = settings.getMaxStabilityProbability().toFixed(1);
+    _updateDisplay: function(display, value) {
+      display.string = value.toFixed(1);
     }
 });

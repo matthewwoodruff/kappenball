@@ -11,20 +11,18 @@ cc.Class({
     },
 
     onLoad: function() {
-        this._updateUncertainty();
+        this._updateUncertainty(settings.getStochasticity());
     },
 
     increase: function() {
-        settings.increaseStochasticity();
-        this._updateUncertainty();
+      this._updateUncertainty(settings.increaseStochasticity());
     },
 
     decrease: function() {
-        settings.decreaseStochasticity();
-        this._updateUncertainty();
+      this._updateUncertainty(settings.decreaseStochasticity());
     },
 
-    _updateUncertainty: function () {
-        this.uncertaintyDisplay.string = settings.getStochasticity().toFixed(1);
+    _updateUncertainty: function (value) {
+      this.uncertaintyDisplay.string = value.toFixed(1);
     }
 });

@@ -10,29 +10,45 @@ function decrease(value) {
   return Math.max(value - 0.1, 0);
 }
 
+function likelihoodFor(value) {
+  return Math.random() <= stochasticity * value * 0.02;
+}
+
 module.exports = {
     increaseMaxInterventionProbability: function() {
-        maxInterventionProbability = increase(maxInterventionProbability);
+        return maxInterventionProbability = increase(maxInterventionProbability);
     },
 
     decreaseMaxInterventionProbability: function() {
-        maxInterventionProbability = decrease(maxInterventionProbability);
+        return maxInterventionProbability = decrease(maxInterventionProbability);
     },
 
     increaseMaxStabilityProbability: function() {
-        maxStabilityProbability = increase(maxStabilityProbability);
+        return maxStabilityProbability = increase(maxStabilityProbability);
     },
 
     decreaseMaxStabilityProbability: function() {
-        maxStabilityProbability = decrease(maxStabilityProbability);
+        return maxStabilityProbability = decrease(maxStabilityProbability);
     },
 
     increaseStochasticity: function() {
-       stochasticity = increase(stochasticity);
+       return stochasticity = increase(stochasticity);
     },
 
     decreaseStochasticity: function() {
-      stochasticity = decrease(stochasticity);
+      return stochasticity = decrease(stochasticity);
+    },
+
+    shouldIntervene: function() {
+      return likelihoodFor(maxInterventionProbability);
+    },
+
+    shouldStabilise: function() {
+      return likelihoodFor(maxStabilityProbability);
+    },
+
+    getStochasticity: function() {
+      return stochasticity;
     },
 
     getMaxStabilityProbability: function() {
@@ -41,17 +57,5 @@ module.exports = {
 
     getMaxInterventionProbability: function() {
       return maxInterventionProbability;
-    },
-
-    getStochasticity: function() {
-      return stochasticity;
-    },
-
-    shouldIntervene: function() {
-      return Math.random() <= stochasticity * maxInterventionProbability * 0.02;
-    },
-
-    shouldStabilise: function() {
-      return Math.random() <= stochasticity * maxStabilityProbability * 0.02;
     }
 }
