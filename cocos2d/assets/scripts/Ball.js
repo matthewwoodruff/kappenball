@@ -25,18 +25,24 @@ cc.Class({
     _randomDirection: function() {
       return Math.random() >= 0.5 ? Direction.LEFT : Direction.RIGHT;
     },
+    
+    _getNewIntervention: function(intervention) {
+        if (intervention === Direction.NONE && settings.shouldIntervene()) {
+          return this._randomDirection();
+        } else if (settings.shouldStabilise()) {
+          return Direction.NONE;
+        } 
+        return intervention
+    },
 
     update: function (dt) {
-        if (this._intervention === Direction.NONE && settings.shouldIntervene()) {
-          this._intervention = this._randomDirection();
-        } else if (settings.shouldStabilise()) {
-          this._intervention = Direction.NONE;
-        }
-
-        this.node.y += this.yVelocity * dt;
+        this._setIntervention(this._getNewIntervention(this._intervention));
+        
         var manualdx = this.xVelocity * this._direction * dt;
         var interventiondx = this.interventionVelocity * this._intervention * dt;
+        
         this.node.x += manualdx + interventiondx;
+        this.node.y += this.yVelocity * dt;
         this._energy += Math.abs(manualdx);
     },
 
@@ -49,8 +55,13 @@ cc.Class({
     },
 
     wallEnter: function() {
-        this._blocked = this._direction;
+        this._blocked = this._movingDirection();
         this._setDirection(Direction.NONE);
+        this._setIntervention(Direction.NONE);
+    },
+    
+    _movingDirection: function() {
+        return this._direction == Direction.NONE ? this._intervention : this._direction;
     },
 
     wallExit: function() {
@@ -81,4 +92,12 @@ cc.Class({
     _setDirection: function(direction) {
         if(this._blocked !== direction) this._direction = direction;
     },
+    
+    _setIntervention: function(direction) {
+        console.log(this._blocked + " : " + direction);
+        
+        if(this._blocked !== direction) {
+            this._intervention = direction;
+        }
+    }
 });

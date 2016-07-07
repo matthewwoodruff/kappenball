@@ -14,6 +14,7 @@ cc.Class({
 
     onLoad: function () {
         cc.director.getCollisionManager().enabled = true;
+        // cc.director.getCollisionManager().enabledDebugDraw = true;
         
         this._ball = this.ball.getComponent('Ball');
         this.node.on(cc.Node.EventType.TOUCH_START, this._touchStart, this);
