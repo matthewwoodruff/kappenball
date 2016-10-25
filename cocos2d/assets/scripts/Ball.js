@@ -94,8 +94,6 @@ cc.Class({
     },
     
     _setIntervention: function(direction) {
-        console.log(this._blocked + " : " + direction);
-        
         if(this._blocked !== direction) {
             this._intervention = direction;
         }
